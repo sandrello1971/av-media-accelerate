@@ -9,6 +9,7 @@ import { ArrowRight, BookOpen, Brain, TrendingUp, Users, Zap, Target, Globe, Fac
 import Layout from "@/components/Layout";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
 import heroBg from "@/assets/hero-bg.jpg";
 import stefanoImg from "/lovable-uploads/8c338c9d-5fa7-438c-afcb-c4b454ad5327.png";
 import servicesImg from "@/assets/services-icons.jpg";
@@ -22,13 +23,14 @@ const Index = () => {
     company: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Validazione base
@@ -41,14 +43,34 @@ const Index = () => {
       return;
     }
 
-    // Simulazione invio (qui andrà integrato con backend)
-    toast({
-      title: "Messaggio inviato!",
-      description: "Ti contatteremo presto per discutere le tue esigenze AI.",
-    });
+    setIsSubmitting(true);
 
-    // Reset form
-    setFormData({ name: '', email: '', company: '', message: '' });
+    try {
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: formData
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      toast({
+        title: "Messaggio inviato!",
+        description: "Ti contatteremo presto per discutere le tue esigenze AI.",
+      });
+
+      // Reset form
+      setFormData({ name: '', email: '', company: '', message: '' });
+    } catch (error) {
+      console.error('Errore invio email:', error);
+      toast({
+        title: "Errore invio",
+        description: "Si è verificato un errore durante l'invio. Riprova più tardi.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   return (
     <Layout>
@@ -492,8 +514,8 @@ const Index = () => {
                       />
                     </div>
                     
-                    <Button type="submit" variant="cta" className="w-full group">
-                      Invia Messaggio
+                    <Button type="submit" variant="cta" className="w-full group" disabled={isSubmitting}>
+                      {isSubmitting ? 'Invio in corso...' : 'Invia Messaggio'}
                       <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </form>
