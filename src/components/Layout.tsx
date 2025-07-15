@@ -48,14 +48,33 @@ const Layout = ({ children }: LayoutProps) => {
             <span className="text-xl font-bold text-primary-glow">AV Media Trend</span>
           </Link>
           <nav className="hidden md:flex items-center space-x-6">
-            <Link 
-              to="/servizi" 
-              className={`text-sm font-medium transition-colors ${
+            <div className="relative group">
+              <span className={`text-sm font-medium transition-colors cursor-pointer ${
                 isActive("/servizi") ? "text-primary-glow" : "hover:text-primary-glow"
-              }`}
-            >
-              Servizi
-            </Link>
+              }`}>
+                Servizi
+              </span>
+              <div className="absolute top-full left-0 mt-2 w-60 bg-background border border-border/40 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                <Link to="/servizi" className="block px-4 py-2 text-sm hover:bg-accent/10 hover:text-primary-glow">
+                  Panoramica Servizi
+                </Link>
+                <Link to="/servizi/formazione" className="block px-4 py-2 text-sm hover:bg-accent/10 hover:text-primary-glow">
+                  Formazione AI
+                </Link>
+                <Link to="/servizi/consulenza" className="block px-4 py-2 text-sm hover:bg-accent/10 hover:text-primary-glow">
+                  Consulenza Strategica
+                </Link>
+                <Link to="/servizi/digital-marketing" className="block px-4 py-2 text-sm hover:bg-accent/10 hover:text-primary-glow">
+                  Digital Marketing
+                </Link>
+                <Link to="/servizi/supporto-continuativo" className="block px-4 py-2 text-sm hover:bg-accent/10 hover:text-primary-glow">
+                  Supporto Continuativo
+                </Link>
+                <Link to="/servizi/pacchetti-consulenza" className="block px-4 py-2 text-sm hover:bg-accent/10 hover:text-primary-glow">
+                  🧠 Pacchetti di Consulenza AI
+                </Link>
+              </div>
+            </div>
             <div className="relative group">
               <span className={`text-sm font-medium transition-colors cursor-pointer ${
                 isActive("/chi-siamo") ? "text-primary-glow" : "hover:text-primary-glow"
@@ -146,6 +165,7 @@ const Layout = ({ children }: LayoutProps) => {
                 <li><Link to="/servizi/consulenza" className="hover:text-primary-glow transition-colors">Consulenza Strategica</Link></li>
                 <li><Link to="/servizi/digital-marketing" className="hover:text-primary-glow transition-colors">Digital Marketing</Link></li>
                 <li><Link to="/servizi/supporto-continuativo" className="hover:text-primary-glow transition-colors">Supporto Continuativo</Link></li>
+                <li><Link to="/servizi/pacchetti-consulenza" className="hover:text-primary-glow transition-colors">🧠 Pacchetti di Consulenza AI</Link></li>
               </ul>
             </div>
             
