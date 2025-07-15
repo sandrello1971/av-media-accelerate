@@ -15,6 +15,7 @@ const ChatBot = () => {
   const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [processingDocId, setProcessingDocId] = useState(null);
   const { user } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -26,7 +27,13 @@ const ChatBot = () => {
 
   const reprocessDocument = async (docId, docName) => {
     try {
-      setIsLoading(true);
+      setProcessingDocId(docId);
+      
+      toast({ 
+        title: 'Riprocessamento avviato', 
+        description: `Elaborando "${docName}"...`,
+        duration: 2000 
+      });
       
       // Get document content
       const { data: doc, error: docError } = await supabase
@@ -49,12 +56,21 @@ const ChatBot = () => {
 
       if (response.error) throw response.error;
 
-      toast({ title: 'Successo', description: `Documento "${docName}" riprocessato con successo!` });
+      toast({ 
+        title: '✅ Successo', 
+        description: `Documento "${docName}" riprocessato con successo! Ora puoi chattare con Intelligence.`,
+        duration: 4000 
+      });
     } catch (error) {
       console.error('Errore durante il riprocessamento:', error);
-      toast({ title: 'Errore', description: `Errore nel riprocessamento: ${error.message}`, variant: 'destructive' });
+      toast({ 
+        title: '❌ Errore', 
+        description: `Errore nel riprocessamento: ${error.message}`, 
+        variant: 'destructive',
+        duration: 5000 
+      });
     } finally {
-      setIsLoading(false);
+      setProcessingDocId(null);
     }
   };
 
@@ -257,20 +273,24 @@ const ChatBot = () => {
                             {new Date(doc.created_at).toLocaleDateString()}
                           </p>
                         </div>
-                        <div className="flex gap-2">
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            className="h-8 w-8 p-0 hover:bg-blue-500 hover:text-white hover:border-blue-500"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              reprocessDocument(doc.id, doc.name);
-                            }}
-                            title="Riprocessa documento"
-                            disabled={isLoading}
-                          >
-                            <RefreshCw className="h-4 w-4" />
-                          </Button>
+                         <div className="flex gap-2">
+                           <Button
+                             variant="outline"
+                             size="sm"
+                             className={`h-8 w-8 p-0 transition-all duration-200 ${
+                               processingDocId === doc.id 
+                                 ? 'bg-blue-500 text-white border-blue-500' 
+                                 : 'hover:bg-blue-500 hover:text-white hover:border-blue-500'
+                             }`}
+                             onClick={(e) => {
+                               e.stopPropagation();
+                               reprocessDocument(doc.id, doc.name);
+                             }}
+                             title={processingDocId === doc.id ? "Elaborazione in corso..." : "Riprocessa documento"}
+                             disabled={processingDocId === doc.id}
+                           >
+                             <RefreshCw className={`h-4 w-4 ${processingDocId === doc.id ? 'animate-spin' : ''}`} />
+                           </Button>
                           <Button
                             variant="outline"
                             size="sm"
