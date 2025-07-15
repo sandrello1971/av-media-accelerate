@@ -177,7 +177,7 @@ const ChatBot = () => {
                   </Button>
                   <input
                     type="file"
-                    accept=".txt,.pdf,.doc,.docx"
+                    accept=".txt,.md,.pdf,.doc,.docx"
                     className="hidden"
                     onChange={(e) => handleFileUpload(e.target.files[0])}
                   />
