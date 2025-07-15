@@ -56,14 +56,24 @@ const Layout = ({ children }: LayoutProps) => {
             >
               Servizi
             </Link>
-            <Link 
-              to="/chi-siamo" 
-              className={`text-sm font-medium transition-colors ${
+            <div className="relative group">
+              <span className={`text-sm font-medium transition-colors cursor-pointer ${
                 isActive("/chi-siamo") ? "text-primary-glow" : "hover:text-primary-glow"
-              }`}
-            >
-              Chi Siamo
-            </Link>
+              }`}>
+                Chi Siamo
+              </span>
+              <div className="absolute top-full left-0 mt-2 w-48 bg-background border border-border/40 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                <Link to="/chi-siamo" className="block px-4 py-2 text-sm hover:bg-accent/10 hover:text-primary-glow">
+                  Panoramica
+                </Link>
+                <Link to="/chi-siamo/metodologia" className="block px-4 py-2 text-sm hover:bg-accent/10 hover:text-primary-glow">
+                  Metodologia
+                </Link>
+                <Link to="/chi-siamo/libri-stefano" className="block px-4 py-2 text-sm hover:bg-accent/10 hover:text-primary-glow">
+                  Libri di Stefano
+                </Link>
+              </div>
+            </div>
             <div className="relative group">
               <span className="text-sm font-medium hover:text-primary-glow transition-colors cursor-pointer">
                 Risorse
@@ -118,8 +128,8 @@ const Layout = ({ children }: LayoutProps) => {
       {/* Footer */}
       <footer className="py-12 border-t border-border/40">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+            <div className="md:col-span-2">{/* Expanded column for main brand */}
               <div className="flex items-center space-x-2 mb-4">
                 <Brain className="h-6 w-6 text-primary-glow" />
                 <span className="text-lg font-bold text-primary-glow">AV Media Trend</span>
@@ -136,6 +146,15 @@ const Layout = ({ children }: LayoutProps) => {
                 <li><Link to="/servizi/consulenza" className="hover:text-primary-glow transition-colors">Consulenza Strategica</Link></li>
                 <li><Link to="/servizi/digital-marketing" className="hover:text-primary-glow transition-colors">Digital Marketing</Link></li>
                 <li><Link to="/servizi/supporto-continuativo" className="hover:text-primary-glow transition-colors">Supporto Continuativo</Link></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="font-semibold mb-4">Chi Siamo</h3>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><Link to="/chi-siamo" className="hover:text-primary-glow transition-colors">Panoramica</Link></li>
+                <li><Link to="/chi-siamo/metodologia" className="hover:text-primary-glow transition-colors">Metodologia</Link></li>
+                <li><Link to="/chi-siamo/libri-stefano" className="hover:text-primary-glow transition-colors">Libri di Stefano</Link></li>
               </ul>
             </div>
             

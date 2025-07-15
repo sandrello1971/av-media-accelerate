@@ -13,6 +13,7 @@ import SupportoContinuativo from "./pages/servizi/SupportoContinuativo";
 import ChiSiamoIndex from "./pages/chi-siamo/Index";
 import Metodologia from "./pages/chi-siamo/Metodologia";
 import LibroAi from "./pages/chi-siamo/LibroAi";
+import LibriStefano from "./pages/chi-siamo/LibriStefano";
 import Blog from "./pages/risorse/Blog";
 import CaseStudies from "./pages/risorse/CaseStudies";
 import Webinar from "./pages/risorse/Webinar";
@@ -45,6 +46,7 @@ const App = () => {
               <Route path="/chi-siamo" element={<ChiSiamoIndex />} />
               <Route path="/chi-siamo/metodologia" element={<Metodologia />} />
               <Route path="/chi-siamo/libro-ai" element={<LibroAi />} />
+              <Route path="/chi-siamo/libri-stefano" element={<LibriStefano />} />
               <Route path="/risorse/blog" element={<Blog />} />
               <Route path="/risorse/case-studies" element={<CaseStudies />} />
               <Route path="/risorse/webinar" element={<Webinar />} />
