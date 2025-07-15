@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { BookOpen, Download, ExternalLink, Star } from "lucide-react";
 import libroFuturoImage from "@/assets/libro-futuro-non-scritto.jpg";
-import libroPartiImage from "@/assets/libro-parti-dall-ai.jpg";
+import libroPartiImage from "@/assets/libro-parti-dall-ai-clean.jpg";
 
 const LibriStefano = () => {
   return (
@@ -104,22 +104,14 @@ const LibriStefano = () => {
                       </CardContent>
                     </Card>
 
-                    <div className="flex flex-col sm:flex-row gap-4">
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
                       <Button 
                         size="lg" 
                         className="bg-gradient-to-r from-primary to-primary-glow hover:from-primary-glow hover:to-accent"
-                        onClick={() => window.open('mailto:info@avmediatrend.com?subject=Richiesta PDF - Il Futuro non è scritto', '_blank')}
-                      >
-                        <Download className="mr-2 h-4 w-4" />
-                        Richiedi PDF
-                      </Button>
-                      <Button 
-                        variant="outline" 
-                        size="lg"
                         onClick={() => window.open('https://amazon.it', '_blank')}
                       >
                         <ExternalLink className="mr-2 h-4 w-4" />
-                        Acquista su Amazon
+                        Acquista Online
                       </Button>
                     </div>
                   </div>
@@ -139,14 +131,15 @@ const LibriStefano = () => {
                   <div className="order-1 p-8 lg:p-12">
                     <Badge variant="secondary" className="mb-4 bg-accent/10 text-accent">
                       <BookOpen className="mr-2 h-4 w-4" />
-                      Guida Pratica
+                      In Omaggio con i Servizi
                     </Badge>
                     <h2 className="text-3xl md:text-4xl font-bold text-accent mb-6">
                       Parti dall'AI
                     </h2>
                     <p className="text-lg text-muted-foreground mb-6">
                       7 modi pratici e immediati per utilizzare l'Intelligenza Artificiale 
-                      nella tua piccola o media impresa. Risultati tangibili che puoi ottenere da subito.
+                      nella tua piccola o media impresa. <strong className="text-accent">Ricevi questo libro in omaggio</strong> con 
+                      i nostri servizi di consulenza.
                     </p>
 
                     {/* Introduzione */}
@@ -186,22 +179,16 @@ const LibriStefano = () => {
                       </CardContent>
                     </Card>
 
-                    <div className="flex flex-col sm:flex-row gap-4">
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
                       <Button 
                         size="lg" 
                         className="bg-gradient-to-r from-accent to-primary-glow hover:from-primary-glow hover:to-primary"
-                        onClick={() => window.open('mailto:info@avmediatrend.com?subject=Richiesta PDF - Parti dall\'AI', '_blank')}
+                        asChild
                       >
-                        <Download className="mr-2 h-4 w-4" />
-                        Richiedi PDF
-                      </Button>
-                      <Button 
-                        variant="outline" 
-                        size="lg"
-                        onClick={() => window.open('https://amazon.it', '_blank')}
-                      >
-                        <ExternalLink className="mr-2 h-4 w-4" />
-                        Acquista su Amazon
+                        <Link to="/contatti/consulenza-gratuita">
+                          <Download className="mr-2 h-4 w-4" />
+                          Richiedi Consulenza e Ricevi il Libro
+                        </Link>
                       </Button>
                     </div>
                   </div>
@@ -232,7 +219,7 @@ const LibriStefano = () => {
               </h2>
               <p className="text-xl text-muted-foreground mb-8">
                 Scopri come l'Intelligenza Artificiale può trasformare la tua impresa. 
-                Prenota una consulenza gratuita e inizia subito a implementare soluzioni AI concrete.
+                Prenota una consulenza gratuita e ricevi in omaggio il libro "Parti dall'AI".
               </p>
               <Link to="/contatti/consulenza-gratuita">
                 <Button size="lg" className="bg-gradient-to-r from-primary via-primary-glow to-accent hover:scale-105 transition-transform">
