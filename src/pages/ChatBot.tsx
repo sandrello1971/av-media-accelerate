@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
-import { FileText, MessageSquare, Upload, Send, Bot, User } from 'lucide-react';
+import { FileText, MessageSquare, Upload, Send, Bot, User, Trash2 } from 'lucide-react';
 
 const ChatBot = () => {
   const [documents, setDocuments] = useState([]);
@@ -116,6 +116,29 @@ const ChatBot = () => {
     }
   };
 
+  const handleDeleteDocument = async (docId, docName) => {
+    try {
+      const { error } = await supabase
+        .from('documents')
+        .delete()
+        .eq('id', docId);
+
+      if (error) throw error;
+
+      // If deleted document was selected, reset selection
+      if (selectedDoc?.id === docId) {
+        setSelectedDoc(null);
+        setConversation(null);
+        setMessages([]);
+      }
+
+      toast({ title: 'Successo', description: `Documento "${docName}" eliminato!` });
+      fetchDocuments();
+    } catch (error) {
+      toast({ title: 'Errore', description: error.message, variant: 'destructive' });
+    }
+  };
+
   const sendMessage = async () => {
     if (!inputMessage.trim() || !conversation) return;
 
@@ -193,10 +216,25 @@ const ChatBot = () => {
                     onClick={() => startConversation(doc)}
                   >
                     <CardContent className="p-3">
-                      <p className="font-medium text-sm">{doc.name}</p>
-                      <p className="text-xs text-muted-foreground">
-                        {new Date(doc.created_at).toLocaleDateString()}
-                      </p>
+                      <div className="flex items-start justify-between">
+                        <div className="flex-1">
+                          <p className="font-medium text-sm">{doc.name}</p>
+                          <p className="text-xs text-muted-foreground">
+                            {new Date(doc.created_at).toLocaleDateString()}
+                          </p>
+                        </div>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="h-6 w-6 p-0 hover:bg-destructive hover:text-destructive-foreground"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleDeleteDocument(doc.id, doc.name);
+                          }}
+                        >
+                          <Trash2 className="h-3 w-3" />
+                        </Button>
+                      </div>
                     </CardContent>
                   </Card>
                 ))}
