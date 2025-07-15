@@ -43,9 +43,12 @@ const Layout = ({ children }: LayoutProps) => {
       {/* Header */}
       <header className="fixed top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
-          <Link to="/" className="flex items-center space-x-2">
-            <Brain className="h-8 w-8 text-primary-glow" />
-            <span className="text-xl font-bold text-primary-glow">AV Media Trend</span>
+          <Link to="/" className="flex items-center">
+            <img 
+              src="/lovable-uploads/36d4b484-7bbc-4674-82c6-e98b593a080d.png" 
+              alt="AV Media Trend" 
+              className="h-10 w-auto"
+            />
           </Link>
           <nav className="hidden md:flex items-center space-x-6">
             <div className="relative group">
@@ -143,9 +146,12 @@ const Layout = ({ children }: LayoutProps) => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
             <div className="md:col-span-2">{/* Expanded column for main brand */}
-              <div className="flex items-center space-x-2 mb-4">
-                <Brain className="h-6 w-6 text-primary-glow" />
-                <span className="text-lg font-bold text-primary-glow">AV Media Trend</span>
+              <div className="flex items-center mb-4">
+                <img 
+                  src="/lovable-uploads/36d4b484-7bbc-4674-82c6-e98b593a080d.png" 
+                  alt="AV Media Trend" 
+                  className="h-8 w-auto"
+                />
               </div>
               <p className="text-sm text-muted-foreground">
                 Accompagniamo le PMI italiane nella trasformazione digitale attraverso l'AI
