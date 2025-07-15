@@ -20,7 +20,7 @@ const ChatBot = () => {
   const { toast } = useToast();
 
   useEffect(() => {
-    if (!user) navigate('/auth');
+    if (!user) navigate('/auth?redirect=/chatbot');
     else fetchDocuments();
   }, [user, navigate]);
 
