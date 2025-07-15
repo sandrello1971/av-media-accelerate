@@ -41,7 +41,7 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
-      <header className="fixed top-0 z-50 w-full bg-gradient-to-b from-background/80 via-background/40 to-transparent backdrop-blur-md border-b border-border/10">
+      <header className="fixed top-0 z-50 w-full bg-transparent">
         <div className="container mx-auto flex h-20 items-center justify-between px-4">
           <Link to="/" className="flex items-center">
             <img 
@@ -137,7 +137,7 @@ const Layout = ({ children }: LayoutProps) => {
       </header>
 
       {/* Main Content */}
-      <main className="pt-20">
+      <main className="pt-0">
         {children}
       </main>
 
