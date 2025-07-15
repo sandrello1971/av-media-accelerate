@@ -2,14 +2,54 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, BookOpen, Brain, TrendingUp, Users, Zap, Target, Globe, Factory, ShoppingCart, Briefcase, Heart, Truck, Rocket } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { ArrowRight, BookOpen, Brain, TrendingUp, Users, Zap, Target, Globe, Factory, ShoppingCart, Briefcase, Heart, Truck, Rocket, Mail, Phone, MapPin } from "lucide-react";
 import Layout from "@/components/Layout";
+import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
 import heroBg from "@/assets/hero-bg.jpg";
 import stefanoImg from "/lovable-uploads/8c338c9d-5fa7-438c-afcb-c4b454ad5327.png";
 import servicesImg from "@/assets/services-icons.jpg";
 import bookCover from "/lovable-uploads/d94ef871-d355-4836-a06f-72ddd3e42107.png";
 
 const Index = () => {
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    message: ''
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Validazione base
+    if (!formData.name || !formData.email || !formData.message) {
+      toast({
+        title: "Errore",
+        description: "Per favore compila tutti i campi obbligatori",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Simulazione invio (qui andrà integrato con backend)
+    toast({
+      title: "Messaggio inviato!",
+      description: "Ti contatteremo presto per discutere le tue esigenze AI.",
+    });
+
+    // Reset form
+    setFormData({ name: '', email: '', company: '', message: '' });
+  };
   return (
     <Layout>
       {/* Hero Section */}
@@ -377,6 +417,153 @@ const Index = () => {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Form di Contatto */}
+      <section className="py-20 bg-gradient-tech">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold mb-6 text-white">Contattaci per una Consulenza Gratuita</h2>
+              <p className="text-xl text-muted-foreground">
+                Parliamo delle tue esigenze e scopriamo come l'AI può trasformare la tua PMI
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              {/* Form */}
+              <Card className="border-primary-glow/20 bg-card/80">
+                <CardHeader>
+                  <CardTitle className="text-2xl text-white">Invia un messaggio</CardTitle>
+                  <CardDescription>
+                    Compila il form e ti contatteremo entro 24 ore
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="space-y-2">
+                      <Label htmlFor="name">Nome e Cognome *</Label>
+                      <Input
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        placeholder="Il tuo nome completo"
+                        required
+                      />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <Label htmlFor="email">Email *</Label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        placeholder="tua@email.com"
+                        required
+                      />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <Label htmlFor="company">Azienda</Label>
+                      <Input
+                        id="company"
+                        name="company"
+                        value={formData.company}
+                        onChange={handleInputChange}
+                        placeholder="Nome della tua azienda"
+                      />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <Label htmlFor="message">Messaggio *</Label>
+                      <Textarea
+                        id="message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        placeholder="Descrivi le tue esigenze e obiettivi con l'AI..."
+                        rows={4}
+                        required
+                      />
+                    </div>
+                    
+                    <Button type="submit" variant="cta" className="w-full group">
+                      Invia Messaggio
+                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </form>
+                </CardContent>
+              </Card>
+              
+              {/* Informazioni di contatto */}
+              <div className="space-y-8">
+                <Card className="border-primary-glow/20 bg-card/50">
+                  <CardHeader>
+                    <CardTitle className="text-xl text-white">Informazioni di Contatto</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-6">
+                    <div className="flex items-start space-x-4">
+                      <div className="p-3 bg-primary-glow/20 rounded-lg">
+                        <Mail className="h-5 w-5 text-primary-glow" />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-white">Email</h4>
+                        <p className="text-muted-foreground">info@avmediatrend.com</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start space-x-4">
+                      <div className="p-3 bg-primary-glow/20 rounded-lg">
+                        <Phone className="h-5 w-5 text-primary-glow" />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-white">Telefono</h4>
+                        <p className="text-muted-foreground">+39 347 685 9801</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start space-x-4">
+                      <div className="p-3 bg-primary-glow/20 rounded-lg">
+                        <MapPin className="h-5 w-5 text-primary-glow" />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-white">LinkedIn</h4>
+                        <a 
+                          href="https://www.linkedin.com/company/avmediatrend" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-primary-glow hover:text-primary-glow/80 transition-colors"
+                        >
+                          /company/avmediatrend
+                        </a>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+                
+                <Card className="border-primary-glow/20 bg-card/50">
+                  <CardHeader>
+                    <CardTitle className="text-xl text-white">Consulenza Gratuita</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground mb-4">
+                      Prenota una consulenza gratuita di 30 minuti per valutare le opportunità AI nella tua azienda.
+                    </p>
+                    <Link to="/contatti/consulenza-gratuita">
+                      <Button variant="ai" className="w-full group">
+                        Prenota Consulenza
+                        <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
           </div>
         </div>
       </section>
