@@ -45,7 +45,7 @@ const Layout = ({ children }: LayoutProps) => {
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <Link to="/" className="flex items-center">
             <img 
-              src="/lovable-uploads/36d4b484-7bbc-4674-82c6-e98b593a080d.png" 
+              src="/lovable-uploads/dc135068-69c9-482a-a7fb-985bfd43d140.png" 
               alt="AV Media Trend" 
               className="h-10 w-auto"
             />
@@ -148,7 +148,7 @@ const Layout = ({ children }: LayoutProps) => {
             <div className="md:col-span-2">{/* Expanded column for main brand */}
               <div className="flex items-center mb-4">
                 <img 
-                  src="/lovable-uploads/36d4b484-7bbc-4674-82c6-e98b593a080d.png" 
+                  src="/lovable-uploads/dc135068-69c9-482a-a7fb-985bfd43d140.png" 
                   alt="AV Media Trend" 
                   className="h-8 w-auto"
                 />
