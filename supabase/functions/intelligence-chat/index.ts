@@ -1,10 +1,16 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.7.1';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
+
+const supabase = createClient(
+  Deno.env.get('SUPABASE_URL') ?? '',
+  Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
+);
 
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
@@ -12,11 +18,60 @@ serve(async (req) => {
   }
 
   try {
-    const { message, conversationHistory } = await req.json();
+    const { message, conversationHistory, userId } = await req.json();
     const openAIApiKey = Deno.env.get('OPENAI_API_KEY');
 
     if (!openAIApiKey) {
       throw new Error('OpenAI API key not configured');
+    }
+
+    // Check if user has documents and search them if relevant
+    let documentContext = '';
+    if (userId) {
+      try {
+        // Get user's documents
+        const { data: documents } = await supabase
+          .from('documents')
+          .select('id, name')
+          .eq('uploaded_by', userId);
+
+        if (documents && documents.length > 0) {
+          // Generate embedding for user question to search documents
+          const embeddingResponse = await fetch('https://api.openai.com/v1/embeddings', {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${openAIApiKey}`,
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              model: 'text-embedding-ada-002',
+              input: message,
+            }),
+          });
+
+          if (embeddingResponse.ok) {
+            const embeddingData = await embeddingResponse.json();
+            const queryEmbedding = embeddingData.data[0].embedding;
+
+            // Search across all user documents
+            for (const doc of documents) {
+              const { data: chunks } = await supabase.rpc('match_documents', {
+                query_embedding: queryEmbedding,
+                match_threshold: 0.75,
+                match_count: 3,
+                filter_document_id: doc.id
+              });
+
+              if (chunks && chunks.length > 0) {
+                documentContext += `\n\nINFORMAZIONI DAL DOCUMENTO "${doc.name}":\n`;
+                documentContext += chunks.map(chunk => chunk.chunk_text).join('\n');
+              }
+            }
+          }
+        }
+      } catch (error) {
+        console.error('Error searching documents:', error);
+      }
     }
 
     // Build conversation context
@@ -67,6 +122,11 @@ OBIETTIVI:
 - Fornire informazioni utili sull'AI per le PMI
 - Guidare verso la consulenza gratuita
 - Dimostrare competenza e professionalità
+- Rispondere a domande sui documenti caricati dall'utente (se disponibili)
+
+IMPORTANTE: Se l'utente ha caricato documenti e fai domande pertinenti, usa le informazioni dai documenti per rispondere. Cita sempre la fonte quando usi informazioni dai documenti.
+
+${documentContext ? `\nDOCUMENTI DELL'UTENTE:\n${documentContext}` : ''}
 
 Rispondi in modo utile, specifico e coinvolgente. Se non sai qualcosa, ammettilo e suggerisci di contattare direttamente l'azienda.`;
 

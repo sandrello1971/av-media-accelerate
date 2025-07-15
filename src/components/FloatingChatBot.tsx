@@ -22,7 +22,7 @@ const FloatingChatBot = () => {
     {
       id: 'welcome',
       role: 'assistant',
-      content: '👋 Ciao! Sono Intelligence, la tua assistente AI. Come posso aiutarti oggi?',
+      content: '👋 Ciao! Sono Intelligence, la tua assistente AI. Posso aiutarti con i servizi di AV Media Trend e, se hai caricato documenti, posso analizzarli per te. Come posso aiutarti?',
       timestamp: new Date()
     }
   ]);
@@ -65,7 +65,8 @@ const FloatingChatBot = () => {
       const response = await supabase.functions.invoke('intelligence-chat', {
         body: {
           message: currentInput,
-          conversationHistory: conversationHistory.slice(-10) // Keep last 10 messages for context
+          conversationHistory: conversationHistory.slice(-10), // Keep last 10 messages for context
+          userId: user?.id || null // Send user ID if authenticated
         }
       });
 
