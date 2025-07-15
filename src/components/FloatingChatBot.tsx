@@ -51,25 +51,52 @@ const FloatingChatBot = () => {
     };
 
     setMessages(prev => [...prev, userMessage]);
+    const currentInput = inputMessage;
     setInputMessage('');
     setIsLoading(true);
 
     try {
-      // Simulate AI response for now
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      // Build conversation history for context
+      const conversationHistory = messages.map(msg => ({
+        role: msg.role,
+        content: msg.content
+      }));
+
+      const response = await supabase.functions.invoke('intelligence-chat', {
+        body: {
+          message: currentInput,
+          conversationHistory: conversationHistory.slice(-10) // Keep last 10 messages for context
+        }
+      });
+
+      if (response.error) {
+        throw new Error(response.error.message);
+      }
+
       const aiResponse: Message = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: generateAIResponse(inputMessage),
+        content: response.data.response,
         timestamp: new Date()
       };
 
       setMessages(prev => [...prev, aiResponse]);
     } catch (error) {
+      console.error('Chat error:', error);
+      
+      // Fallback to basic response if API fails
+      const fallbackResponse: Message = {
+        id: (Date.now() + 1).toString(),
+        role: 'assistant',
+        content: 'Mi dispiace, sto avendo problemi tecnici. Puoi contattarci direttamente a info@avmediatrend.com o prenotare una consulenza gratuita per avere assistenza immediata.',
+        timestamp: new Date()
+      };
+      
+      setMessages(prev => [...prev, fallbackResponse]);
+      
       toast({
-        title: 'Errore',
-        description: 'Non riesco a processare la tua richiesta. Riprova.',
+        title: 'Errore temporaneo',
+        description: 'Intelligence sta avendo problemi. Riprova tra poco.',
         variant: 'destructive'
       });
     } finally {
@@ -77,31 +104,6 @@ const FloatingChatBot = () => {
     }
   };
 
-  const generateAIResponse = (userInput: string): string => {
-    const lowerInput = userInput.toLowerCase();
-    
-    if (lowerInput.includes('servizi') || lowerInput.includes('cosa fate')) {
-      return 'Offriamo servizi di formazione AI, consulenza strategica, digital marketing e supporto continuativo per aiutare le PMI italiane nella trasformazione digitale. Vuoi saperne di più su un servizio specifico?';
-    }
-    
-    if (lowerInput.includes('ai') || lowerInput.includes('intelligenza artificiale')) {
-      return 'L\'intelligenza artificiale può trasformare la tua azienda! Possiamo aiutarti con formazione, implementazione e strategia. Hai già esperienza con l\'AI o stai iniziando da zero?';
-    }
-    
-    if (lowerInput.includes('contatti') || lowerInput.includes('parlare')) {
-      return 'Perfetto! Puoi contattarci a info@avmediatrend.com o al +39 347 685 9801. Vuoi prenotare una consulenza gratuita?';
-    }
-    
-    if (lowerInput.includes('prezzo') || lowerInput.includes('costo')) {
-      return 'I nostri servizi sono personalizzati in base alle tue esigenze. Ti consiglio di prenotare una consulenza gratuita per discutere le tue necessità specifiche. Vuoi che ti aiuti a prenotarla?';
-    }
-    
-    if (lowerInput.includes('grazie') || lowerInput.includes('thanks')) {
-      return 'Prego! Sono qui per aiutarti. Se hai altre domande, non esitare a chiedere! 😊';
-    }
-    
-    return 'Interessante! Posso aiutarti con informazioni sui nostri servizi di AI, formazione, consulenza e digital marketing. Oppure puoi prenotare una consulenza gratuita per discutere le tue esigenze specifiche. Cosa ti interessa di più?';
-  };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
