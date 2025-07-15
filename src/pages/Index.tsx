@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, BookOpen, Brain, TrendingUp, Users, Zap, Target, Globe, Factory, ShoppingCart, Briefcase, Heart, Truck, Rocket } from "lucide-react";
+import Layout from "@/components/Layout";
 import heroBg from "@/assets/hero-bg.jpg";
 import stefanoImg from "/lovable-uploads/8c338c9d-5fa7-438c-afcb-c4b454ad5327.png";
 import servicesImg from "@/assets/services-icons.jpg";
@@ -9,26 +11,7 @@ import bookCover from "/lovable-uploads/d94ef871-d355-4836-a06f-72ddd3e42107.png
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      {/* Header */}
-      <header className="fixed top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container mx-auto flex h-16 items-center justify-between px-4">
-          <div className="flex items-center space-x-2">
-            <Brain className="h-8 w-8 text-primary-glow" />
-            <span className="text-xl font-bold text-primary-glow">AV Media Trend</span>
-          </div>
-          <nav className="hidden md:flex items-center space-x-6">
-            <a href="#servizi" className="text-sm font-medium hover:text-primary-glow transition-colors">Servizi</a>
-            <a href="#chi-siamo" className="text-sm font-medium hover:text-primary-glow transition-colors">Chi Siamo</a>
-            <a href="#risorse" className="text-sm font-medium hover:text-primary-glow transition-colors">Risorse</a>
-            <a href="#contatti" className="text-sm font-medium hover:text-primary-glow transition-colors">Contatti</a>
-          </nav>
-          <Button variant="cta" size="sm">
-            Consulenza Gratuita
-          </Button>
-        </div>
-      </header>
-
+    <Layout>
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div 
@@ -463,7 +446,7 @@ const Index = () => {
           </div>
         </div>
       </footer>
-    </div>
+    </Layout>
   );
 };
 
