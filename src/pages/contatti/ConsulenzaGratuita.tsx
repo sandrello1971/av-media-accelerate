@@ -109,55 +109,142 @@ ${formData.message}
         {/* Hero Section */}
         <section className="py-20 lg:py-28">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h1 className="text-4xl lg:text-6xl font-bold bg-gradient-to-r from-primary via-purple-600 to-primary bg-clip-text text-transparent mb-6">
-                Consulenza AI Gratuita
-              </h1>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Scopri come l'Intelligenza Artificiale può trasformare il tuo business. 
-                <br />
-                <strong>30 minuti gratuiti</strong> con i nostri esperti per valutare il potenziale AI della tua azienda.
-              </p>
+          <div className="text-center mb-16">
+            <h1 className="text-4xl lg:text-6xl font-bold bg-gradient-to-r from-primary via-purple-600 to-primary bg-clip-text text-transparent mb-6">
+              🎯 Consulenza Gratuita: Parti dall'AI
+            </h1>
+            <p className="text-xl text-primary-glow font-medium mb-4">
+              💡 Un'ora di confronto strategico per capire se e come l'AI può davvero aiutare la tua impresa.
+            </p>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Hai sentito parlare di Intelligenza Artificiale, ma non sai da dove cominciare? Ti aiutiamo noi.
+            </p>
+          </div>
+
+          {/* Cosa offriamo */}
+          <div className="mb-16">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-center mb-12">
+                Con la nostra consulenza gratuita, ti offriamo:
+              </h2>
+              <div className="grid md:grid-cols-2 gap-8">
+                <Card className="border-primary/20 hover:border-primary/40 transition-colors">
+                  <CardContent className="p-6">
+                    <div className="flex items-start space-x-3">
+                      <div className="text-primary-glow text-xl">✅</div>
+                      <p className="text-muted-foreground">
+                        Un'analisi preliminare delle tue esigenze operative e comunicative
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-primary/20 hover:border-primary/40 transition-colors">
+                  <CardContent className="p-6">
+                    <div className="flex items-start space-x-3">
+                      <div className="text-primary-glow text-xl">✅</div>
+                      <p className="text-muted-foreground">
+                        Una panoramica chiara e personalizzata delle tecnologie AI applicabili al tuo business
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-primary/20 hover:border-primary/40 transition-colors">
+                  <CardContent className="p-6">
+                    <div className="flex items-start space-x-3">
+                      <div className="text-primary-glow text-xl">✅</div>
+                      <p className="text-muted-foreground">
+                        Suggerimenti concreti su strumenti gratuiti e sostenibili che puoi iniziare a usare subito
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-primary/20 hover:border-primary/40 transition-colors">
+                  <CardContent className="p-6">
+                    <div className="flex items-start space-x-3">
+                      <div className="text-primary-glow text-xl">✅</div>
+                      <p className="text-muted-foreground">
+                        Una guida iniziale per valutare l'impatto e le opportunità dell'innovazione digitale nella tua realtà
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
+          </div>
 
-            {/* Benefits Cards */}
-            <div className="grid md:grid-cols-3 gap-8 mb-16">
-              <Card className="text-center border-primary/20 hover:border-primary/40 transition-colors">
-                <CardHeader>
-                  <Calendar className="h-12 w-12 text-primary mx-auto mb-4" />
-                  <CardTitle>30 Minuti Gratuiti</CardTitle>
-                </CardHeader>
-                <CardContent>
+          {/* A chi è rivolta, Come funziona, Bonus */}
+          <div className="grid lg:grid-cols-3 gap-8 mb-16">
+            <Card className="border-primary/20">
+              <CardHeader>
+                <CardTitle className="text-2xl">📌 A chi è rivolta?</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
                   <p className="text-muted-foreground">
-                    Una sessione dedicata per capire le tue esigenze
+                    PMI che vogliono capire se l'AI è utile o solo una moda
                   </p>
-                </CardContent>
-              </Card>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
+                  <p className="text-muted-foreground">
+                    Professionisti e imprenditori che desiderano digitalizzare processi senza investimenti iniziali
+                  </p>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
+                  <p className="text-muted-foreground">
+                    Realtà del turismo, artigianato, cultura e servizi che vogliono fare il primo passo verso l'innovazione
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
 
-              <Card className="text-center border-primary/20 hover:border-primary/40 transition-colors">
-                <CardHeader>
-                  <Target className="h-12 w-12 text-primary mx-auto mb-4" />
-                  <CardTitle>Analisi Personalizzata</CardTitle>
-                </CardHeader>
-                <CardContent>
+            <Card className="border-primary/20">
+              <CardHeader>
+                <CardTitle className="text-2xl">🕐 Come funziona?</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
                   <p className="text-muted-foreground">
-                    Valutiamo insieme il potenziale AI del tuo settore
+                    Compila il modulo
                   </p>
-                </CardContent>
-              </Card>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
+                  <p className="text-muted-foreground">
+                    Ti ricontattiamo per fissare una video call di 45–60 minuti
+                  </p>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
+                  <p className="text-muted-foreground">
+                    Riceverai un mini-report con gli spunti operativi emersi dalla call
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
 
-              <Card className="text-center border-primary/20 hover:border-primary/40 transition-colors">
-                <CardHeader>
-                  <Users className="h-12 w-12 text-primary mx-auto mb-4" />
-                  <CardTitle>Strategia su Misura</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">
-                    Ricevi consigli pratici per iniziare il tuo percorso AI
+            <Card className="border-primary/20 bg-gradient-to-br from-primary/5 to-primary/10">
+              <CardHeader>
+                <CardTitle className="text-2xl">🎁 Bonus</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Al termine della consulenza, riceverai in omaggio il nostro compendio gratuito:
+                </p>
+                <div className="bg-background/50 p-4 rounded-lg border border-primary/20">
+                  <p className="font-medium text-primary">
+                    "Parti dall'AI – Guida per PMI che vogliono innovare senza complicazioni"
                   </p>
-                </CardContent>
-              </Card>
-            </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
 
             {/* Form Section */}
             <div className="max-w-4xl mx-auto">
@@ -165,7 +252,7 @@ ${formData.message}
                 <CardHeader className="text-center">
                   <CardTitle className="text-2xl">Prenota la Tua Consulenza</CardTitle>
                   <p className="text-muted-foreground">
-                    Compila il form e ti contatteremo entro 24 ore
+                    Compila il form e ti ricontattiamo per fissare la tua video call gratuita
                   </p>
                 </CardHeader>
                 <CardContent>
