@@ -10,6 +10,7 @@ import { Badge } from '@/components/ui/badge';
 import { Switch } from '@/components/ui/switch';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import RichTextEditor from '@/components/RichTextEditor';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { Loader2, Plus, Edit, Trash2, Eye, LogOut } from 'lucide-react';
@@ -360,13 +361,10 @@ const BlogAdmin = () => {
 
                   <div className="space-y-2">
                     <Label htmlFor="content">Contenuto</Label>
-                    <Textarea
-                      id="content"
-                      value={formData.content}
-                      onChange={(e) => setFormData({...formData, content: e.target.value})}
-                      rows={15}
-                      required
-                      disabled={loading}
+                    <RichTextEditor
+                      content={formData.content}
+                      onChange={(content) => setFormData({...formData, content})}
+                      placeholder="Scrivi il contenuto del tuo articolo..."
                     />
                   </div>
 
