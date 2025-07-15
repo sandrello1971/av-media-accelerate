@@ -29,6 +29,8 @@ interface BlogArticle {
 const BlogAdmin = () => {
   const [articles, setArticles] = useState<BlogArticle[]>([]);
   const [loading, setLoading] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [checkingAdmin, setCheckingAdmin] = useState(true);
   const [editingArticle, setEditingArticle] = useState<BlogArticle | null>(null);
   const [formData, setFormData] = useState({
     title: '',
@@ -40,11 +42,36 @@ const BlogAdmin = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
 
-  // Redirect non-authenticated users
+  // Check if user is admin
   useEffect(() => {
-    if (!user) {
-      navigate('/auth');
-    }
+    const checkAdminStatus = async () => {
+      if (!user) {
+        navigate('/auth');
+        return;
+      }
+
+      try {
+        const { data, error } = await supabase
+          .from('profiles')
+          .select('role')
+          .eq('user_id', user.id)
+          .single();
+
+        if (error) {
+          console.error('Error checking admin status:', error);
+          setIsAdmin(false);
+        } else {
+          setIsAdmin(data?.role === 'admin');
+        }
+      } catch (error) {
+        console.error('Error checking admin status:', error);
+        setIsAdmin(false);
+      } finally {
+        setCheckingAdmin(false);
+      }
+    };
+
+    checkAdminStatus();
   }, [user, navigate]);
 
   // Fetch articles
@@ -176,6 +203,39 @@ const BlogAdmin = () => {
 
   if (!user) {
     return null;
+  }
+
+  if (checkingAdmin) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="text-center">
+          <Loader2 className="h-8 w-8 animate-spin mx-auto mb-4" />
+          <p className="text-muted-foreground">Verifica autorizzazioni...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!isAdmin) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background px-4">
+        <Card className="w-full max-w-md">
+          <CardHeader>
+            <CardTitle className="text-center">Accesso negato</CardTitle>
+          </CardHeader>
+          <CardContent className="text-center space-y-4">
+            <Alert>
+              <AlertDescription>
+                Non hai i permessi necessari per accedere a questa pagina.
+              </AlertDescription>
+            </Alert>
+            <Button onClick={() => navigate('/')} variant="outline">
+              Torna alla homepage
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
+    );
   }
 
   return (

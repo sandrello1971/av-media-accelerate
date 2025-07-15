@@ -26,11 +26,38 @@ interface BlogArticle {
 const Blog = () => {
   const [articles, setArticles] = useState<BlogArticle[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
   const { user } = useAuth();
 
   useEffect(() => {
     fetchArticles();
-  }, []);
+    checkAdminStatus();
+  }, [user]);
+
+  const checkAdminStatus = async () => {
+    if (!user) {
+      setIsAdmin(false);
+      return;
+    }
+
+    try {
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('role')
+        .eq('user_id', user.id)
+        .single();
+
+      if (error) {
+        console.error('Error checking admin status:', error);
+        setIsAdmin(false);
+      } else {
+        setIsAdmin(data?.role === 'admin');
+      }
+    } catch (error) {
+      console.error('Error checking admin status:', error);
+      setIsAdmin(false);
+    }
+  };
 
   const fetchArticles = async () => {
     try {
@@ -72,7 +99,7 @@ const Blog = () => {
               Insights, guide e novità sul mondo dell'intelligenza artificiale per le PMI
             </p>
           </div>
-          {user && (
+          {isAdmin && (
             <Button asChild>
               <Link to="/admin/blog">
                 <Edit className="mr-2 h-4 w-4" />
@@ -91,7 +118,7 @@ const Blog = () => {
             <p className="text-lg text-muted-foreground">
               Nessun articolo pubblicato al momento.
             </p>
-            {user && (
+            {isAdmin && (
               <Button asChild className="mt-4">
                 <Link to="/admin/blog">
                   Pubblica il primo articolo
@@ -133,25 +160,6 @@ const Blog = () => {
           </div>
         )}
 
-        {!user && (
-          <div className="mt-12 text-center">
-            <Card className="max-w-md mx-auto">
-              <CardHeader>
-                <CardTitle>Gestisci il tuo blog</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-4">
-                  Accedi per creare e gestire i tuoi articoli
-                </p>
-                <Button asChild className="w-full">
-                  <Link to="/auth">
-                    Accedi
-                  </Link>
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-        )}
       </div>
     </Layout>
   );
