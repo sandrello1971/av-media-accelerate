@@ -40,18 +40,19 @@ const LibriStefano = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                   {/* Immagine del libro */}
                   <div className="order-2 lg:order-1 p-8 lg:p-12">
-                    <div className="relative group cursor-pointer" onClick={() => window.open('https://www.amazon.it/dp/B0F8K8367C', '_blank')}>
+                    <a 
+                      href="https://www.amazon.it/dp/B0F8K8367C"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative group cursor-pointer block"
+                    >
                       <img 
                         src={libroFuturoImage} 
                         alt="Il Futuro non è scritto - Copertina" 
-                        className="w-full max-w-sm mx-auto rounded-lg shadow-2xl transition-transform duration-300 group-hover:scale-105 cursor-pointer"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          window.open('https://www.amazon.it/dp/B0F8K8367C', '_blank');
-                        }}
+                        className="w-full max-w-sm mx-auto rounded-lg shadow-2xl transition-transform duration-300 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-                    </div>
+                    </a>
                   </div>
 
                   {/* Contenuto del libro */}
@@ -114,7 +115,7 @@ const LibriStefano = () => {
                       <Button 
                         size="lg" 
                         className="bg-gradient-to-r from-primary to-primary-glow hover:from-primary-glow hover:to-accent"
-                        onClick={() => window.open('https://amazon.it', '_blank')}
+                        onClick={() => window.open('https://www.amazon.it/dp/B0F8K8367C', '_blank')}
                       >
                         <ExternalLink className="mr-2 h-4 w-4" />
                         Acquista Online
