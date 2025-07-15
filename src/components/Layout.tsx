@@ -47,7 +47,7 @@ const Layout = ({ children }: LayoutProps) => {
             <img 
               src="/lovable-uploads/dc135068-69c9-482a-a7fb-985bfd43d140.png" 
               alt="AV Media Trend" 
-              className="h-12 w-auto"
+              className="h-24 w-auto"
             />
           </Link>
           <nav className="hidden md:flex items-center space-x-6">
