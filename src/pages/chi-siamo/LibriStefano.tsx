@@ -40,7 +40,7 @@ const LibriStefano = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                   {/* Immagine del libro */}
                   <div className="order-2 lg:order-1 p-8 lg:p-12">
-                    <div className="relative group">
+                    <div className="relative group cursor-pointer" onClick={() => window.open('https://www.amazon.it/dp/B0F8K8367C', '_blank')}>
                       <img 
                         src={libroFuturoImage} 
                         alt="Il Futuro non è scritto - Copertina" 
