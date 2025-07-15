@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, BookOpen, Brain, TrendingUp, Users, Zap, Target, Globe, Factory, ShoppingCart, Briefcase, Heart, Truck, Rocket } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
-import stefanoImg from "@/assets/stefano-andrello-with-bg.jpg";
+import stefanoImg from "/lovable-uploads/8c338c9d-5fa7-438c-afcb-c4b454ad5327.png";
 import servicesImg from "@/assets/services-icons.jpg";
 import bookCover from "/lovable-uploads/d94ef871-d355-4836-a06f-72ddd3e42107.png";
 
