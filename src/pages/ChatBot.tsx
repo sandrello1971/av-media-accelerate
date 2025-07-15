@@ -216,23 +216,24 @@ const ChatBot = () => {
                     onClick={() => startConversation(doc)}
                   >
                     <CardContent className="p-3">
-                      <div className="flex items-start justify-between">
-                        <div className="flex-1">
-                          <p className="font-medium text-sm">{doc.name}</p>
+                      <div className="flex items-center justify-between gap-3">
+                        <div className="flex-1 min-w-0">
+                          <p className="font-medium text-sm truncate">{doc.name}</p>
                           <p className="text-xs text-muted-foreground">
                             {new Date(doc.created_at).toLocaleDateString()}
                           </p>
                         </div>
                         <Button
-                          variant="ghost"
+                          variant="outline"
                           size="sm"
-                          className="h-6 w-6 p-0 hover:bg-destructive hover:text-destructive-foreground"
+                          className="h-8 w-8 p-0 hover:bg-destructive hover:text-destructive-foreground hover:border-destructive"
                           onClick={(e) => {
                             e.stopPropagation();
                             handleDeleteDocument(doc.id, doc.name);
                           }}
+                          title="Elimina documento"
                         >
-                          <Trash2 className="h-3 w-3" />
+                          <Trash2 className="h-4 w-4" />
                         </Button>
                       </div>
                     </CardContent>
