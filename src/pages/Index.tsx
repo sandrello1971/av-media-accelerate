@@ -386,9 +386,11 @@ const Index = () => {
                   </div>
                 </div>
                 
-                <Button variant="ai" size="lg" className="group">
-                  Scopri i Libri di Stefano
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                <Button variant="ai" size="lg" className="group" asChild>
+                  <Link to="/chi-siamo/libri-stefano">
+                    Scopri i Libri di Stefano
+                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
                 </Button>
               </div>
               
