@@ -44,13 +44,7 @@ const Layout = ({ children }: LayoutProps) => {
       {/* Header */}
       <header className="fixed top-0 z-50 w-full bg-transparent">
         <div className="container mx-auto flex h-20 items-center justify-between px-4">
-          <Link to="/" className="flex items-center">
-            <img 
-              src="/lovable-uploads/dc135068-69c9-482a-a7fb-985bfd43d140.png" 
-              alt="AV Media Trend" 
-              className="h-24 w-auto"
-            />
-          </Link>
+          <div></div> {/* Empty space where logo was */}
           
           {/* Hamburger Menu Button */}
           <button
