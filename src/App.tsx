@@ -21,6 +21,7 @@ import ContattiIndex from "./pages/contatti/Index";
 import ConsulenzaGratuita from "./pages/contatti/ConsulenzaGratuita";
 import Auth from "./pages/Auth";
 import BlogAdmin from "./pages/admin/BlogAdmin";
+import ChatBot from "./pages/ChatBot";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -51,6 +52,7 @@ const App = () => {
               <Route path="/contatti/consulenza-gratuita" element={<ConsulenzaGratuita />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/admin/blog" element={<BlogAdmin />} />
+              <Route path="/chatbot" element={<ChatBot />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
