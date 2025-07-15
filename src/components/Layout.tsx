@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Brain, Settings } from "lucide-react";
+import { Brain, Settings, Menu, X } from "lucide-react";
 import { ReactNode, useEffect, useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
@@ -14,6 +14,7 @@ const Layout = ({ children }: LayoutProps) => {
   const location = useLocation();
   const { user } = useAuth();
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   useEffect(() => {
     const checkAdminStatus = async () => {
@@ -116,22 +117,133 @@ const Layout = ({ children }: LayoutProps) => {
             </Link>
           </nav>
           <div className="flex items-center space-x-2">
-            {isAdmin && (
-              <Link to="/admin">
-                <Button variant="ghost" size="sm" className="text-primary-glow hover:text-primary-glow/80">
-                  <Settings className="h-4 w-4 mr-2" />
-                  Admin
+            {/* Desktop buttons */}
+            <div className="hidden md:flex items-center space-x-2">
+              {isAdmin && (
+                <Link to="/admin">
+                  <Button variant="ghost" size="sm" className="text-primary-glow hover:text-primary-glow/80">
+                    <Settings className="h-4 w-4 mr-2" />
+                    Admin
+                  </Button>
+                </Link>
+              )}
+              <Link to="/contatti/consulenza-gratuita">
+                <Button variant="cta" size="sm">
+                  Consulenza Gratuita
                 </Button>
               </Link>
-            )}
-            <Link to="/contatti/consulenza-gratuita">
-              <Button variant="cta" size="sm">
-                Consulenza Gratuita
-              </Button>
-            </Link>
+            </div>
+            
+            {/* Mobile hamburger menu */}
+            <Button
+              variant="ghost"
+              size="sm"
+              className="md:hidden text-primary-glow hover:text-primary-glow/80"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </Button>
           </div>
         </div>
       </header>
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 z-50 md:hidden">
+          <div className="fixed inset-0 bg-background/80 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)} />
+          <div className="fixed top-0 right-0 h-full w-full max-w-sm bg-background border-l border-border/40 p-6 shadow-lg">
+            <div className="flex items-center justify-between mb-8">
+              <div className="flex items-center space-x-2">
+                <Brain className="h-6 w-6 text-primary-glow" />
+                <span className="text-lg font-bold text-primary-glow">AV Media Trend</span>
+              </div>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-primary-glow hover:text-primary-glow/80"
+              >
+                <X className="h-6 w-6" />
+              </Button>
+            </div>
+            
+            <nav className="space-y-6">
+              <div>
+                <h3 className="font-semibold mb-3 text-primary-glow">Servizi</h3>
+                <div className="space-y-2 pl-4">
+                  <Link to="/servizi" className="block text-sm hover:text-primary-glow transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
+                    Panoramica Servizi
+                  </Link>
+                  <Link to="/servizi/formazione" className="block text-sm hover:text-primary-glow transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
+                    Formazione AI
+                  </Link>
+                  <Link to="/servizi/consulenza" className="block text-sm hover:text-primary-glow transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
+                    Consulenza Strategica
+                  </Link>
+                  <Link to="/servizi/pacchetti-consulenza" className="block text-sm hover:text-primary-glow transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
+                    🧠 Pacchetti di Consulenza AI
+                  </Link>
+                </div>
+              </div>
+              
+              <div>
+                <h3 className="font-semibold mb-3 text-primary-glow">Chi Siamo</h3>
+                <div className="space-y-2 pl-4">
+                  <Link to="/chi-siamo" className="block text-sm hover:text-primary-glow transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
+                    Panoramica
+                  </Link>
+                  <Link to="/chi-siamo/metodologia" className="block text-sm hover:text-primary-glow transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
+                    Metodologia
+                  </Link>
+                  <Link to="/chi-siamo/libri-stefano" className="block text-sm hover:text-primary-glow transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
+                    Libri di Stefano
+                  </Link>
+                </div>
+              </div>
+              
+              <div>
+                <h3 className="font-semibold mb-3 text-primary-glow">Risorse</h3>
+                <div className="space-y-2 pl-4">
+                  <Link to="/risorse/blog" className="block text-sm hover:text-primary-glow transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
+                    Blog
+                  </Link>
+                  <Link to="/risorse/case-studies" className="block text-sm hover:text-primary-glow transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
+                    Case Studies
+                  </Link>
+                  <Link to="/risorse/webinar" className="block text-sm hover:text-primary-glow transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
+                    Webinar
+                  </Link>
+                  <Link to="/risorse/toolkit" className="block text-sm hover:text-primary-glow transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
+                    Toolkit
+                  </Link>
+                </div>
+              </div>
+              
+              <div>
+                <Link to="/contatti" className="block font-semibold text-primary-glow hover:text-primary-glow/80 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
+                  Contatti
+                </Link>
+              </div>
+            </nav>
+            
+            <div className="mt-8 space-y-4">
+              {isAdmin && (
+                <Link to="/admin" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Button variant="ghost" size="sm" className="w-full justify-start text-primary-glow hover:text-primary-glow/80">
+                    <Settings className="h-4 w-4 mr-2" />
+                    Admin
+                  </Button>
+                </Link>
+              )}
+              <Link to="/contatti/consulenza-gratuita" onClick={() => setIsMobileMenuOpen(false)}>
+                <Button variant="cta" size="sm" className="w-full">
+                  Consulenza Gratuita
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Main Content */}
       <main className="pt-16">
