@@ -5,7 +5,7 @@ const ChiSiamoIndex = () => {
     <Layout>
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl font-bold mb-8 text-center">Chi Siamo</h1>
+          <h1 className="text-4xl font-bold mb-8 text-center text-white">Chi Siamo</h1>
           
           <div className="prose prose-lg max-w-none">
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
@@ -22,14 +22,14 @@ const ChiSiamoIndex = () => {
             
             <div className="grid md:grid-cols-2 gap-8 mb-12">
               <div className="bg-card/50 p-6 rounded-lg border">
-                <h2 className="text-2xl font-bold mb-4 text-primary">La nostra mission</h2>
+                <h2 className="text-2xl font-bold mb-4 text-white">La nostra mission</h2>
                 <p className="text-muted-foreground leading-relaxed">
                   Guidiamo le imprese nell'adozione consapevole dell'AI e delle tecnologie digitali, attraverso consulenza, formazione e supporto operativo. Vogliamo colmare il divario tra innovazione e PMI, fornendo strumenti chiari, concreti e realmente applicabili.
                 </p>
               </div>
               
               <div className="bg-card/50 p-6 rounded-lg border">
-                <h2 className="text-2xl font-bold mb-4 text-primary">La nostra visione</h2>
+                <h2 className="text-2xl font-bold mb-4 text-white">La nostra visione</h2>
                 <p className="text-muted-foreground leading-relaxed">
                   Crediamo in un futuro dove ogni azienda – indipendentemente dalle sue dimensioni – possa sfruttare appieno le potenzialità dell'innovazione per crescere in modo sostenibile, competitivo e umano-centrico.
                 </p>
@@ -37,12 +37,12 @@ const ChiSiamoIndex = () => {
             </div>
             
             <div className="mb-12">
-              <h2 className="text-2xl font-bold mb-6 text-primary">I nostri valori</h2>
+              <h2 className="text-2xl font-bold mb-6 text-white">I nostri valori</h2>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-primary rounded-full mt-3 flex-shrink-0"></div>
                   <div>
-                    <h3 className="font-semibold mb-2">Accessibilità tecnologica</h3>
+                    <h3 className="font-semibold mb-2 text-white">Accessibilità tecnologica</h3>
                     <p className="text-muted-foreground">L'AI non è (più) solo per pochi.</p>
                   </div>
                 </div>
@@ -50,7 +50,7 @@ const ChiSiamoIndex = () => {
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-primary rounded-full mt-3 flex-shrink-0"></div>
                   <div>
-                    <h3 className="font-semibold mb-2">Consapevolezza digitale</h3>
+                    <h3 className="font-semibold mb-2 text-white">Consapevolezza digitale</h3>
                     <p className="text-muted-foreground">Prima la cultura, poi gli strumenti.</p>
                   </div>
                 </div>
@@ -58,7 +58,7 @@ const ChiSiamoIndex = () => {
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-primary rounded-full mt-3 flex-shrink-0"></div>
                   <div>
-                    <h3 className="font-semibold mb-2">Approccio umano</h3>
+                    <h3 className="font-semibold mb-2 text-white">Approccio umano</h3>
                     <p className="text-muted-foreground">La tecnologia deve potenziare le persone, non sostituirle.</p>
                   </div>
                 </div>
@@ -66,7 +66,7 @@ const ChiSiamoIndex = () => {
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-primary rounded-full mt-3 flex-shrink-0"></div>
                   <div>
-                    <h3 className="font-semibold mb-2">Concretezza</h3>
+                    <h3 className="font-semibold mb-2 text-white">Concretezza</h3>
                     <p className="text-muted-foreground">Strategie tangibili, soluzioni operative, risultati misurabili.</p>
                   </div>
                 </div>
@@ -74,12 +74,12 @@ const ChiSiamoIndex = () => {
             </div>
             
             <div>
-              <h2 className="text-2xl font-bold mb-6 text-primary">Cosa ci distingue</h2>
+              <h2 className="text-2xl font-bold mb-6 text-white">Cosa ci distingue</h2>
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-primary rounded-full mt-3 flex-shrink-0"></div>
                   <div>
-                    <h3 className="font-semibold mb-2">Esperienza multidisciplinare</h3>
+                    <h3 className="font-semibold mb-2 text-white">Esperienza multidisciplinare</h3>
                     <p className="text-muted-foreground">Un mix di competenze che unisce project management, marketing digitale, copywriting, formazione e architetture tecnologiche.</p>
                   </div>
                 </div>
@@ -87,7 +87,7 @@ const ChiSiamoIndex = () => {
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-primary rounded-full mt-3 flex-shrink-0"></div>
                   <div>
-                    <h3 className="font-semibold mb-2">Approccio full-service</h3>
+                    <h3 className="font-semibold mb-2 text-white">Approccio full-service</h3>
                     <p className="text-muted-foreground">Dalla strategia alla realizzazione, seguiamo ogni progetto in ogni sua fase.</p>
                   </div>
                 </div>
@@ -95,7 +95,7 @@ const ChiSiamoIndex = () => {
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-primary rounded-full mt-3 flex-shrink-0"></div>
                   <div>
-                    <h3 className="font-semibold mb-2">Focus sulle PMI</h3>
+                    <h3 className="font-semibold mb-2 text-white">Focus sulle PMI</h3>
                     <p className="text-muted-foreground">Conosciamo a fondo le sfide delle piccole e medie imprese italiane e offriamo soluzioni su misura.</p>
                   </div>
                 </div>
@@ -103,7 +103,7 @@ const ChiSiamoIndex = () => {
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-primary rounded-full mt-3 flex-shrink-0"></div>
                   <div>
-                    <h3 className="font-semibold mb-2">Formazione avanzata</h3>
+                    <h3 className="font-semibold mb-2 text-white">Formazione avanzata</h3>
                     <p className="text-muted-foreground">Crediamo che il primo passo verso l'innovazione sia la comprensione. E per questo formiamo, guidiamo e accompagniamo.</p>
                   </div>
                 </div>
