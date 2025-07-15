@@ -44,7 +44,11 @@ const LibriStefano = () => {
                       <img 
                         src={libroFuturoImage} 
                         alt="Il Futuro non è scritto - Copertina" 
-                        className="w-full max-w-sm mx-auto rounded-lg shadow-2xl transition-transform duration-300 group-hover:scale-105"
+                        className="w-full max-w-sm mx-auto rounded-lg shadow-2xl transition-transform duration-300 group-hover:scale-105 cursor-pointer"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          window.open('https://www.amazon.it/dp/B0F8K8367C', '_blank');
+                        }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                     </div>
