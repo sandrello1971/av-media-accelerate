@@ -13,6 +13,7 @@ interface ContactFormData {
   email: string;
   company?: string;
   message: string;
+  type?: string;
 }
 
 const handler = async (req: Request): Promise<Response> => {
@@ -22,24 +23,32 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const { name, email, company, message }: ContactFormData = await req.json();
+    const { name, email, company, message, type }: ContactFormData = await req.json();
 
-    console.log("Sending contact email:", { name, email, company });
+    console.log("Sending contact email:", { name, email, company, type });
+
+    const isConsultation = type === 'consultation';
+    const subject = isConsultation 
+      ? `🎯 RICHIESTA CONSULENZA GRATUITA - ${name}`
+      : `Nuovo messaggio dal sito web - ${name}`;
 
     // Send email to info@avmediatrend.com
     const emailResponse = await resend.emails.send({
       from: "Contatti <noreply@avmediatrend.com>",
       to: ["info@avmediatrend.com"],
-      subject: `Nuovo messaggio dal sito web - ${name}`,
+      subject: subject,
       html: `
-        <h2>Nuovo messaggio dal form di contatto</h2>
+        <h2>${isConsultation ? '🎯 RICHIESTA CONSULENZA GRATUITA AI' : 'Nuovo messaggio dal form di contatto'}</h2>
         <p><strong>Nome:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         ${company ? `<p><strong>Azienda:</strong> ${company}</p>` : ''}
         <p><strong>Messaggio:</strong></p>
-        <p>${message.replace(/\n/g, '<br>')}</p>
+        <div style="background-color: #f5f5f5; padding: 15px; border-left: 4px solid #007bff; margin: 10px 0;">
+          ${message.replace(/\n/g, '<br>')}
+        </div>
         <hr>
         <p><em>Messaggio ricevuto dal sito web AVMT</em></p>
+        ${isConsultation ? '<p><strong>⏰ PRIORITÀ ALTA: Rispondere entro 24 ore per la consulenza gratuita</strong></p>' : ''}
       `,
     });
 

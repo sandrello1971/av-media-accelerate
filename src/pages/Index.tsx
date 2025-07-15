@@ -103,9 +103,11 @@ const Index = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in" style={{ animationDelay: '0.4s' }}>
-              <Button variant="cta" size="xl" className="group">
-                Richiedi Consulenza Gratuita
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              <Button variant="cta" size="xl" className="group" asChild>
+                <a href="/contatti/consulenza-gratuita">
+                  Richiedi Consulenza Gratuita
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </a>
               </Button>
               <Button variant="tech" size="xl">
                 Scopri i Nostri Servizi
@@ -598,9 +600,11 @@ const Index = () => {
             <p className="text-xl text-muted-foreground mb-8">
               Consulenza gratuita di 30 minuti per valutare le opportunità AI nella tua azienda
             </p>
-            <Button variant="cta" size="xl" className="group">
-              Prenota Consulenza Gratuita
-              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            <Button variant="cta" size="xl" className="group" asChild>
+              <a href="/contatti/consulenza-gratuita">
+                Prenota Consulenza Gratuita
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              </a>
             </Button>
           </div>
         </div>
