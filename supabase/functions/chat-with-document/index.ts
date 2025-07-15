@@ -12,6 +12,19 @@ const supabase = createClient(
   Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
 );
 
+// Function to sanitize text and remove unsupported Unicode sequences
+function sanitizeText(text: string): string {
+  return text
+    // Remove NULL bytes and other control characters
+    .replace(/\u0000/g, '')
+    .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F-\u009F]/g, '')
+    // Remove unsupported Unicode escape sequences
+    .replace(/\\u[0-9a-fA-F]{4}/g, '')
+    // Normalize whitespace
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
@@ -20,6 +33,9 @@ serve(async (req) => {
   try {
     const { message, documentId, conversationId } = await req.json();
     const openAIApiKey = Deno.env.get('OPENAI_API_KEY');
+    
+    // Sanitize the message
+    const sanitizedMessage = sanitizeText(message);
 
     // Generate embedding for the user question
     const embeddingResponse = await fetch('https://api.openai.com/v1/embeddings', {
@@ -30,7 +46,7 @@ serve(async (req) => {
       },
       body: JSON.stringify({
         model: 'text-embedding-ada-002',
-        input: message,
+        input: sanitizedMessage,
       }),
     });
 
@@ -73,7 +89,7 @@ serve(async (req) => {
           },
           {
             role: 'user',
-            content: message
+            content: sanitizedMessage
           }
         ],
         temperature: 0.7,
@@ -88,14 +104,14 @@ serve(async (req) => {
     await supabase.from('chat_messages').insert({
       conversation_id: conversationId,
       role: 'user',
-      content: message,
+      content: sanitizedMessage,
     });
 
     // Save assistant response with sources
     await supabase.from('chat_messages').insert({
       conversation_id: conversationId,
       role: 'assistant',
-      content: response,
+      content: sanitizeText(response),
       sources: similarChunks?.map(chunk => ({
         text: chunk.chunk_text,
         similarity: chunk.similarity
