@@ -4,8 +4,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { BookOpen, Download, ExternalLink, Star } from "lucide-react";
-import libroFuturoImage from "@/assets/libro-futuro-non-scritto.jpg";
-import libroPartiImage from "@/assets/libro-parti-dall-ai-clean.jpg";
+import libroPartiImage from "@/assets/parti-dall-ai-nottext.jpg";
+
+// Immagine reale della copertina
+const libroFuturoImage = "/lovable-uploads/1b173368-4275-4a0f-9a31-05c7fde31e8e.png";
 
 const LibriStefano = () => {
   return (
