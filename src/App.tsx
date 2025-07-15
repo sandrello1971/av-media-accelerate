@@ -25,38 +25,41 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <AuthProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/servizi" element={<ServiziIndex />} />
-            <Route path="/servizi/formazione" element={<Formazione />} />
-            <Route path="/servizi/consulenza" element={<Consulenza />} />
-            <Route path="/servizi/digital-marketing" element={<DigitalMarketing />} />
-            <Route path="/servizi/supporto-continuativo" element={<SupportoContinuativo />} />
-            <Route path="/chi-siamo" element={<ChiSiamoIndex />} />
-            <Route path="/chi-siamo/metodologia" element={<Metodologia />} />
-            <Route path="/chi-siamo/libro-ai" element={<LibroAi />} />
-            <Route path="/risorse/blog" element={<Blog />} />
-            <Route path="/risorse/case-studies" element={<CaseStudies />} />
-            <Route path="/risorse/webinar" element={<Webinar />} />
-            <Route path="/risorse/toolkit" element={<Toolkit />} />
-            <Route path="/contatti" element={<ContattiIndex />} />
-            <Route path="/contatti/consulenza-gratuita" element={<ConsulenzaGratuita />} />
-            <Route path="/auth" element={<Auth />} />
-            <Route path="/admin/blog" element={<BlogAdmin />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </AuthProvider>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  console.log('App component is rendering');
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <AuthProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/servizi" element={<ServiziIndex />} />
+              <Route path="/servizi/formazione" element={<Formazione />} />
+              <Route path="/servizi/consulenza" element={<Consulenza />} />
+              <Route path="/servizi/digital-marketing" element={<DigitalMarketing />} />
+              <Route path="/servizi/supporto-continuativo" element={<SupportoContinuativo />} />
+              <Route path="/chi-siamo" element={<ChiSiamoIndex />} />
+              <Route path="/chi-siamo/metodologia" element={<Metodologia />} />
+              <Route path="/chi-siamo/libro-ai" element={<LibroAi />} />
+              <Route path="/risorse/blog" element={<Blog />} />
+              <Route path="/risorse/case-studies" element={<CaseStudies />} />
+              <Route path="/risorse/webinar" element={<Webinar />} />
+              <Route path="/risorse/toolkit" element={<Toolkit />} />
+              <Route path="/contatti" element={<ContattiIndex />} />
+              <Route path="/contatti/consulenza-gratuita" element={<ConsulenzaGratuita />} />
+              <Route path="/auth" element={<Auth />} />
+              <Route path="/admin/blog" element={<BlogAdmin />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </AuthProvider>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;
