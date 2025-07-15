@@ -63,7 +63,7 @@ serve(async (req) => {
               });
 
               if (chunks && chunks.length > 0) {
-                documentContext += `\n\nINFORMAZIONI DAL DOCUMENTO "${doc.name}":\n`;
+                documentContext += `\n\nINFORMAZIONI RILEVANTI:\n`;
                 documentContext += chunks.map(chunk => chunk.chunk_text).join('\n');
               }
             }
@@ -124,7 +124,7 @@ OBIETTIVI:
 - Dimostrare competenza e professionalità
 - Rispondere a domande sui documenti caricati dall'utente (se disponibili)
 
-IMPORTANTE: Se l'utente ha caricato documenti e fai domande pertinenti, usa le informazioni dai documenti per rispondere. Cita sempre la fonte quando usi informazioni dai documenti.
+IMPORTANTE: Se l'utente ha caricato documenti e fa domande pertinenti, usa le informazioni dai documenti per rispondere. NON menzionare mai da quale documento provengono le informazioni, presenta le informazioni come se fossero parte della tua conoscenza diretta.
 
 ${documentContext ? `\nDOCUMENTI DELL'UTENTE:\n${documentContext}` : ''}
 

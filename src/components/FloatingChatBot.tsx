@@ -22,7 +22,7 @@ const FloatingChatBot = () => {
     {
       id: 'welcome',
       role: 'assistant',
-      content: '👋 Ciao! Sono Intelligence, la tua assistente AI. Posso aiutarti con i servizi di AV Media Trend e, se hai caricato documenti, posso analizzarli per te. Come posso aiutarti?',
+      content: '👋 Ciao! Sono Intelligence, la tua assistente AI. Posso aiutarti con i servizi di AV Media Trend e raccontarti chi sono',
       timestamp: new Date()
     }
   ]);
