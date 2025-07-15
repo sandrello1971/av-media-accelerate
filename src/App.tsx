@@ -8,8 +8,6 @@ import Index from "./pages/Index";
 import ServiziIndex from "./pages/servizi/Index";
 import Formazione from "./pages/servizi/Formazione";
 import Consulenza from "./pages/servizi/Consulenza";
-import DigitalMarketing from "./pages/servizi/DigitalMarketing";
-import SupportoContinuativo from "./pages/servizi/SupportoContinuativo";
 import PacchettiConsulenza from "./pages/servizi/PacchettiConsulenza";
 import ChiSiamoIndex from "./pages/chi-siamo/Index";
 import Metodologia from "./pages/chi-siamo/Metodologia";
@@ -42,8 +40,6 @@ const App = () => {
               <Route path="/servizi" element={<ServiziIndex />} />
               <Route path="/servizi/formazione" element={<Formazione />} />
               <Route path="/servizi/consulenza" element={<Consulenza />} />
-              <Route path="/servizi/digital-marketing" element={<DigitalMarketing />} />
-              <Route path="/servizi/supporto-continuativo" element={<SupportoContinuativo />} />
               <Route path="/servizi/pacchetti-consulenza" element={<PacchettiConsulenza />} />
               <Route path="/chi-siamo" element={<ChiSiamoIndex />} />
               <Route path="/chi-siamo/metodologia" element={<Metodologia />} />

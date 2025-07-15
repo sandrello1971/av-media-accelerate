@@ -21,8 +21,8 @@ const ServiziIndex = () => {
             </h1>
             
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Sei servizi specializzati per accompagnare la tua PMI nella trasformazione digitale: 
-              dalla consulenza strategica alla creazione di contenuti, con risultati concreti e ROI immediato.
+              Quattro servizi specializzati per accompagnare la tua PMI nella trasformazione digitale: 
+              dalla consulenza strategica alla formazione avanzata, con risultati concreti e ROI immediato.
             </p>
             
             <Link to="/contatti/consulenza-gratuita">
@@ -38,7 +38,7 @@ const ServiziIndex = () => {
       {/* Servizi Core */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Consulenza in Intelligenza Artificiale */}
             <Card className="border-primary-glow/20 bg-card/80 hover:shadow-glow transition-all duration-300">
               <CardHeader>
@@ -121,48 +121,48 @@ const ServiziIndex = () => {
               </CardContent>
             </Card>
             
-            {/* Strategia e comunicazione digitale */}
+            {/* Pacchetti di Consulenza AI */}
             <Card className="border-accent/20 bg-card/80 hover:shadow-glow transition-all duration-300">
               <CardHeader>
                 <div className="flex items-center space-x-3 mb-4">
                   <div className="p-3 bg-accent/20 rounded-lg">
-                    <Megaphone className="h-6 w-6 text-accent" />
+                    <Target className="h-6 w-6 text-accent" />
                   </div>
                   <div>
-                    <CardTitle className="text-xl">Strategia & Comunicazione Digitale</CardTitle>
-                    <CardDescription>Marketing e branding strategico</CardDescription>
+                    <CardTitle className="text-xl">🧠 Pacchetti di Consulenza AI</CardTitle>
+                    <CardDescription>Soluzioni modulari e scalabili</CardDescription>
                   </div>
                 </div>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-6">
-                  Piani editoriali multicanale, copywriting SEO e personal branding 
-                  per posizionare la tua azienda nel mercato digitale.
+                  Tre pacchetti studiati per PMI, startup ed enti pubblici: AI Starter, AI Pilot e AI Partner. 
+                  Scegli il livello giusto per la tua trasformazione.
                 </p>
                 <ul className="space-y-2 text-sm mb-6">
                   <li className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-accent rounded-full" />
-                    <span>Strategie multicanale</span>
+                    <span>AI Starter - Per iniziare</span>
                   </li>
                   <li className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-accent rounded-full" />
-                    <span>Copywriting SEO</span>
+                    <span>AI Pilot - Progetto pilota</span>
                   </li>
                   <li className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-accent rounded-full" />
-                    <span>Personal branding</span>
+                    <span>AI Partner - Supporto continuativo</span>
                   </li>
                 </ul>
-                <Link to="/servizi/digital-marketing">
+                <Link to="/servizi/pacchetti-consulenza">
                   <Button variant="cta" className="group">
-                    Potenzia il Brand
+                    Scopri i Pacchetti
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
               </CardContent>
             </Card>
-            
-            {/* Progettazione di soluzioni digitali innovative */}
+
+            {/* Soluzioni Digitali Innovative */}
             <Card className="border-primary-glow/20 bg-card/80 hover:shadow-glow transition-all duration-300">
               <CardHeader>
                 <div className="flex items-center space-x-3 mb-4">
@@ -171,113 +171,31 @@ const ServiziIndex = () => {
                   </div>
                   <div>
                     <CardTitle className="text-xl">Soluzioni Digitali Innovative</CardTitle>
-                    <CardDescription>Web3, blockchain e tecnologie emergenti</CardDescription>
+                    <CardDescription>Contenuti e innovazione digitale</CardDescription>
                   </div>
                 </div>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-6">
-                  Sviluppiamo MVP e PoC per soluzioni Web3, blockchain e tool emergenti 
-                  che rivoluzionano il tuo business model.
-                </p>
-                <ul className="space-y-2 text-sm mb-6">
-                  <li className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-primary-glow rounded-full" />
-                    <span>Studio e validazione Web3</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-primary-glow rounded-full" />
-                    <span>Sviluppo MVP e PoC</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-primary-glow rounded-full" />
-                    <span>Integrazione con processi</span>
-                  </li>
-                </ul>
-                <Link to="/contatti/consulenza-gratuita">
-                  <Button variant="ai" className="group">
-                    Innoviamo Insieme
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-            
-            {/* Servizi "chiavi in mano" */}
-            <Card className="border-secondary/20 bg-card/80 hover:shadow-glow transition-all duration-300">
-              <CardHeader>
-                <div className="flex items-center space-x-3 mb-4">
-                  <div className="p-3 bg-secondary/20 rounded-lg">
-                    <Wrench className="h-6 w-6 text-secondary" />
-                  </div>
-                  <div>
-                    <CardTitle className="text-xl">Servizi "Chiavi in Mano"</CardTitle>
-                    <CardDescription>Trasformazione digitale completa</CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-6">
-                  Supporto completo dalla diagnosi alla messa in produzione, 
-                  con coordinamento tecnico e operativo di tutti gli stakeholder.
-                </p>
-                <ul className="space-y-2 text-sm mb-6">
-                  <li className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-secondary rounded-full" />
-                    <span>Diagnosi → Produzione</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-secondary rounded-full" />
-                    <span>Coordinamento completo</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-secondary rounded-full" />
-                    <span>Personalizzazione settoriale</span>
-                  </li>
-                </ul>
-                <Link to="/servizi/supporto-continuativo">
-                  <Button variant="tech" className="group">
-                    Trasforma Ora
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-            
-            {/* Creazione contenuti e valorizzazione della conoscenza */}
-            <Card className="border-accent/20 bg-card/80 hover:shadow-glow transition-all duration-300">
-              <CardHeader>
-                <div className="flex items-center space-x-3 mb-4">
-                  <div className="p-3 bg-accent/20 rounded-lg">
-                    <FileText className="h-6 w-6 text-accent" />
-                  </div>
-                  <div>
-                    <CardTitle className="text-xl">Contenuti & Conoscenza</CardTitle>
-                    <CardDescription>Produzione editoriale e divulgazione</CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-6">
-                  Produciamo contenuti editoriali su AI e innovazione, con editing professionale 
+                  Sviluppiamo contenuti editoriali su AI e innovazione, con editing professionale 
                   e supporto alla divulgazione multicanale.
                 </p>
                 <ul className="space-y-2 text-sm mb-6">
                   <li className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-accent rounded-full" />
+                    <div className="w-2 h-2 bg-primary-glow rounded-full" />
                     <span>Produzione contenuti AI</span>
                   </li>
                   <li className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-accent rounded-full" />
+                    <div className="w-2 h-2 bg-primary-glow rounded-full" />
                     <span>Editing professionale</span>
                   </li>
                   <li className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-accent rounded-full" />
+                    <div className="w-2 h-2 bg-primary-glow rounded-full" />
                     <span>Divulgazione multicanale</span>
                   </li>
                 </ul>
-                <Link to="/contatti">
-                  <Button variant="cta" className="group">
+                <Link to="/contatti/consulenza-gratuita">
+                  <Button variant="ai" className="group">
                     Crea Valore
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Button>

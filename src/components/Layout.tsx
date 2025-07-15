@@ -64,12 +64,6 @@ const Layout = ({ children }: LayoutProps) => {
                 <Link to="/servizi/consulenza" className="block px-4 py-2 text-sm hover:bg-accent/10 hover:text-primary-glow">
                   Consulenza Strategica
                 </Link>
-                <Link to="/servizi/digital-marketing" className="block px-4 py-2 text-sm hover:bg-accent/10 hover:text-primary-glow">
-                  Digital Marketing
-                </Link>
-                <Link to="/servizi/supporto-continuativo" className="block px-4 py-2 text-sm hover:bg-accent/10 hover:text-primary-glow">
-                  Supporto Continuativo
-                </Link>
                 <Link to="/servizi/pacchetti-consulenza" className="block px-4 py-2 text-sm hover:bg-accent/10 hover:text-primary-glow">
                   🧠 Pacchetti di Consulenza AI
                 </Link>
@@ -163,8 +157,6 @@ const Layout = ({ children }: LayoutProps) => {
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li><Link to="/servizi/formazione" className="hover:text-primary-glow transition-colors">Formazione AI</Link></li>
                 <li><Link to="/servizi/consulenza" className="hover:text-primary-glow transition-colors">Consulenza Strategica</Link></li>
-                <li><Link to="/servizi/digital-marketing" className="hover:text-primary-glow transition-colors">Digital Marketing</Link></li>
-                <li><Link to="/servizi/supporto-continuativo" className="hover:text-primary-glow transition-colors">Supporto Continuativo</Link></li>
                 <li><Link to="/servizi/pacchetti-consulenza" className="hover:text-primary-glow transition-colors">🧠 Pacchetti di Consulenza AI</Link></li>
               </ul>
             </div>

@@ -200,7 +200,7 @@ const Index = () => {
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">I Nostri Servizi Core</h2>
             <p className="text-xl text-muted-foreground">
-              Quattro pilastri per la tua trasformazione digitale
+              Tre pilastri per la tua trasformazione digitale
             </p>
           </div>
           
@@ -269,11 +269,11 @@ const Index = () => {
               <CardHeader>
                 <div className="flex items-center space-x-3 mb-4">
                   <div className="p-3 bg-accent/20 rounded-lg">
-                    <TrendingUp className="h-6 w-6 text-accent" />
+                    <Target className="h-6 w-6 text-accent" />
                   </div>
                   <div>
-                    <CardTitle className="text-xl">Digital Marketing AI-Enhanced</CardTitle>
-                    <CardDescription>Marketing potenziato dall'intelligenza artificiale</CardDescription>
+                    <CardTitle className="text-xl">🧠 Pacchetti di Consulenza AI</CardTitle>
+                    <CardDescription>Soluzioni modulari e scalabili</CardDescription>
                   </div>
                 </div>
               </CardHeader>
@@ -281,45 +281,15 @@ const Index = () => {
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-accent rounded-full" />
-                    <span>Content marketing con AI</span>
+                    <span>AI Starter - Per iniziare</span>
                   </li>
                   <li className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-accent rounded-full" />
-                    <span>Marketing automation</span>
+                    <span>AI Pilot - Progetto pilota</span>
                   </li>
                   <li className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-accent rounded-full" />
-                    <span>Analytics predittive</span>
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-            
-            <Card className="border-primary-glow/20 bg-card/80 hover:shadow-glow transition-all duration-300">
-              <CardHeader>
-                <div className="flex items-center space-x-3 mb-4">
-                  <div className="p-3 bg-primary-glow/20 rounded-lg">
-                    <Zap className="h-6 w-6 text-primary-glow" />
-                  </div>
-                  <div>
-                    <CardTitle className="text-xl">Supporto Continuativo</CardTitle>
-                    <CardDescription>Accompagnamento costante nella crescita</CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-sm">
-                  <li className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-primary-glow rounded-full" />
-                    <span>Abbonamento mensile</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-primary-glow rounded-full" />
-                    <span>AI Tutor on-demand</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-primary-glow rounded-full" />
-                    <span>Monitoraggio metriche</span>
+                    <span>AI Partner - Supporto continuativo</span>
                   </li>
                 </ul>
               </CardContent>
