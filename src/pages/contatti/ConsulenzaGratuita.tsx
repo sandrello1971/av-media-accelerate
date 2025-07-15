@@ -246,6 +246,205 @@ ${formData.message}
             </Card>
           </div>
 
+          {/* Pacchetti di Consulenza AI */}
+          <div className="mb-16">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold mb-4">🧠 I nostri Pacchetti di Consulenza AI</h2>
+              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                Soluzioni modulari, scalabili e costruite intorno alle esigenze reali di microimprese, PMI, startup ed enti pubblici.
+                Scegli il livello giusto di accompagnamento per avviare, sperimentare o far evolvere l'uso dell'intelligenza artificiale nella tua organizzazione.
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-3 gap-8">
+              {/* AI Starter */}
+              <Card className="border-green-500/30 bg-gradient-to-br from-green-50/50 to-green-100/30 hover:shadow-lg transition-all duration-300">
+                <CardHeader className="pb-4">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                    <CardTitle className="text-2xl text-green-700">AI Starter</CardTitle>
+                  </div>
+                  <p className="text-sm text-green-600 font-medium">
+                    Perfetto per iniziare, testare e capire cosa può fare davvero l'AI per te.
+                  </p>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <p className="text-muted-foreground">
+                    Pensato per microimprese, piccole attività e professionisti che vogliono muovere i primi passi con l'intelligenza artificiale in modo concreto, senza complessità.
+                  </p>
+                  
+                  <div>
+                    <h4 className="font-semibold text-green-700 mb-3">Cosa comprende:</h4>
+                    <ul className="space-y-2 text-sm">
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2"></div>
+                        <span>Assessment semplificato dei tuoi processi e opportunità</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2"></div>
+                        <span>Workshop introduttivo con te e il tuo team (mezza giornata)</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2"></div>
+                        <span>Report operativo con roadmap di priorità</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2"></div>
+                        <span>Formazione pratica su uno strumento AI (es. assistente FAQ, automazione)</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2"></div>
+                        <span>Configurazione/implementazione di uno strumento AI pronto all'uso</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2"></div>
+                        <span>Supporto remoto post-lancio per 1 mese</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                    <div className="text-sm space-y-1">
+                      <div><strong>Tempistiche:</strong> 4–6 settimane (tutto incluso)</div>
+                      <div><strong>Modalità:</strong> progetto una tantum</div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2 text-green-700">
+                    <span className="text-lg">📍</span>
+                    <p className="text-sm font-medium">
+                      Ideale per ottenere risultati rapidi con investimenti contenuti e misurabili.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* AI Pilot */}
+              <Card className="border-blue-500/30 bg-gradient-to-br from-blue-50/50 to-blue-100/30 hover:shadow-lg transition-all duration-300">
+                <CardHeader className="pb-4">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                    <CardTitle className="text-2xl text-blue-700">AI Pilot</CardTitle>
+                  </div>
+                  <p className="text-sm text-blue-600 font-medium">
+                    Il tuo primo progetto AI, fatto bene e su misura.
+                  </p>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <p className="text-muted-foreground">
+                    Pensato per PMI strutturate e startup in fase di crescita che vogliono passare dalla teoria alla pratica con un progetto pilota ad alto valore strategico.
+                  </p>
+                  
+                  <div>
+                    <h4 className="font-semibold text-blue-700 mb-3">Cosa comprende:</h4>
+                    <ul className="space-y-2 text-sm">
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2"></div>
+                        <span>Assessment approfondito di processi, dati e flussi</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2"></div>
+                        <span>Studio di fattibilità e selezione del primo use-case</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2"></div>
+                        <span>Progettazione e sviluppo di una soluzione AI personalizzata (es. predictive analytics, modelli generativi, tool settoriali)</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2"></div>
+                        <span>Formazione operativa rivolta a utenti chiave e tecnici interni</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2"></div>
+                        <span>Deploy della soluzione e prima integrazione nel tuo ambiente aziendale</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2"></div>
+                        <span>Supporto operativo e monitoraggio per 2 mesi post-avvio</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                    <div className="text-sm space-y-1">
+                      <div><strong>Tempistiche:</strong> 5–6 mesi totali (3–4 mesi progetto + 2 mesi supporto)</div>
+                      <div><strong>Modalità:</strong> progetto a risultato</div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2 text-blue-700">
+                    <span className="text-lg">📍</span>
+                    <p className="text-sm font-medium">
+                      Ideale per chi vuole testare un caso d'uso concreto prima di un'adozione più ampia.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* AI Partner */}
+              <Card className="border-orange-500/30 bg-gradient-to-br from-orange-50/50 to-orange-100/30 hover:shadow-lg transition-all duration-300">
+                <CardHeader className="pb-4">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
+                    <CardTitle className="text-2xl text-orange-700">AI Partner</CardTitle>
+                  </div>
+                  <p className="text-sm text-orange-600 font-medium">
+                    Il tuo partner AI di fiducia, lungo tutto l'anno.
+                  </p>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <p className="text-muted-foreground">
+                    Pensato per PMI medio-grandi, enti pubblici e scale-up che desiderano un percorso evolutivo continuo nel tempo, con supporto strategico, operativo e formativo.
+                  </p>
+                  
+                  <div>
+                    <h4 className="font-semibold text-orange-700 mb-3">Cosa comprende:</h4>
+                    <ul className="space-y-2 text-sm">
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 bg-orange-500 rounded-full mt-2"></div>
+                        <span>Strategia AI: incontri periodici con il top management (mensili o quindicinali)</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 bg-orange-500 rounded-full mt-2"></div>
+                        <span>Formazione continua al personale (workshop trimestrali, training avanzati)</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 bg-orange-500 rounded-full mt-2"></div>
+                        <span>Manutenzione e ottimizzazione delle soluzioni AI già attive</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 bg-orange-500 rounded-full mt-2"></div>
+                        <span>Sviluppo iterativo di nuovi progetti AI su base modulare</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 bg-orange-500 rounded-full mt-2"></div>
+                        <span>Helpdesk operativo e supporto day-by-day</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 bg-orange-500 rounded-full mt-2"></div>
+                        <span>Possibilità di presenza onsite come Interim AI Manager</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
+                    <div className="text-sm space-y-1">
+                      <div><strong>Tempistiche:</strong> contratto annuale (12 mesi rinnovabile)</div>
+                      <div><strong>Modalità:</strong> consulenza continuativa</div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2 text-orange-700">
+                    <span className="text-lg">📍</span>
+                    <p className="text-sm font-medium">
+                      Ideale per chi vuole innovare costantemente senza costruire un team interno.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+
             {/* Form Section */}
             <div className="max-w-4xl mx-auto">
               <Card className="border-primary/20">
