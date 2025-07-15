@@ -8,15 +8,15 @@ All colors MUST be HSL.
 
 @layer base {
 :root {
-    /* AV Media Trend brand colors */
-    --primary: 205 85% 25%;           /* Deep blue - logo circle */
+    /* AI Book-inspired color palette */
+    --primary: 213 34% 16%;           /* Deep navy - libro cover */
     --primary-foreground: 0 0% 98%;
-    --primary-glow: 35 95% 55%;       /* Orange glow - logo AV/Media */
+    --primary-glow: 195 100% 50%;     /* Cyan glow - accenti luminosi */
     
-    --secondary: 205 85% 25%;         /* Brand blue */
+    --secondary: 142 76% 36%;         /* AI green - crescita e innovazione */
     --secondary-foreground: 0 0% 98%;
     
-    --accent: 35 95% 55%;             /* Brand orange */
+    --accent: 24 100% 50%;            /* Orange - CTA energico */
     --accent-foreground: 0 0% 98%;
     
     --background: 213 34% 8%;         /* Sfondo scuro come il libro */
