@@ -2,7 +2,7 @@ import Layout from "@/components/Layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, Download, ArrowRight } from "lucide-react";
+import { ExternalLink, ArrowRight } from "lucide-react";
 
 const Toolkit = () => {
   const toolCategories = [
@@ -167,24 +167,6 @@ const Toolkit = () => {
               ))}
             </div>
 
-            {/* Bonus Section */}
-            <div className="mt-20 text-center">
-              <Card className="border-primary/20 bg-gradient-to-br from-primary/5 to-primary/10 max-w-2xl mx-auto">
-                <CardHeader>
-                  <CardTitle className="text-2xl">🎓 Bonus: "Parti dall'AI"</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground mb-6" style={{ fontFamily: 'Georgia, serif' }}>
-                    Inizia subito con la nostra guida gratuita all'innovazione per PMI: semplice, pratica, concreta.
-                  </p>
-                  <Button variant="cta" size="lg" className="group">
-                    <Download className="mr-2 h-5 w-5" />
-                    Scaricala ora
-                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </CardContent>
-              </Card>
-            </div>
 
             {/* CTA Section */}
             <div className="mt-20 text-center">
