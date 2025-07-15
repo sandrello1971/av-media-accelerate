@@ -37,12 +37,26 @@ const ChatBot = () => {
     }
   };
 
+  // Function to sanitize text and remove unsupported Unicode sequences
+  const sanitizeText = (text: string): string => {
+    return text
+      // Remove NULL bytes and other control characters
+      .replace(/\u0000/g, '')
+      .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F-\u009F]/g, '')
+      // Remove unsupported Unicode escape sequences
+      .replace(/\\u[0-9a-fA-F]{4}/g, '')
+      // Normalize whitespace
+      .replace(/\s+/g, ' ')
+      .trim();
+  };
+
   const handleFileUpload = async (file) => {
     if (!file) return;
     
     setIsLoading(true);
     try {
-      const content = await file.text();
+      const rawContent = await file.text();
+      const content = sanitizeText(rawContent);
       
       // Save document to database
       const { data: doc, error } = await supabase
