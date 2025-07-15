@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Brain } from "lucide-react";
 import { ReactNode } from "react";
+import FloatingChatBot from "./FloatingChatBot";
 
 interface LayoutProps {
   children: ReactNode;
@@ -131,6 +132,9 @@ const Layout = ({ children }: LayoutProps) => {
           </div>
         </div>
       </footer>
+      
+      {/* Floating ChatBot */}
+      <FloatingChatBot />
     </div>
   );
 };
