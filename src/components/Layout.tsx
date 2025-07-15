@@ -1,7 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Brain } from "lucide-react";
-import { ReactNode } from "react";
+import { Brain, Settings } from "lucide-react";
+import { ReactNode, useEffect, useState } from "react";
+import { useAuth } from "@/contexts/AuthContext";
+import { supabase } from "@/integrations/supabase/client";
 import FloatingChatBot from "./FloatingChatBot";
 
 interface LayoutProps {
@@ -10,6 +12,26 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   const location = useLocation();
+  const { user } = useAuth();
+  const [isAdmin, setIsAdmin] = useState(false);
+  
+  useEffect(() => {
+    const checkAdminStatus = async () => {
+      if (user) {
+        const { data } = await supabase
+          .from('profiles')
+          .select('role')
+          .eq('user_id', user.id)
+          .single();
+        
+        setIsAdmin(data?.role === 'admin');
+      } else {
+        setIsAdmin(false);
+      }
+    };
+    
+    checkAdminStatus();
+  }, [user]);
   
   const isActive = (path: string) => {
     if (path === "/") return location.pathname === "/";
@@ -70,11 +92,21 @@ const Layout = ({ children }: LayoutProps) => {
               Contatti
             </Link>
           </nav>
-          <Link to="/contatti/consulenza-gratuita">
-            <Button variant="cta" size="sm">
-              Consulenza Gratuita
-            </Button>
-          </Link>
+          <div className="flex items-center space-x-2">
+            {isAdmin && (
+              <Link to="/admin">
+                <Button variant="ghost" size="sm" className="text-primary-glow hover:text-primary-glow/80">
+                  <Settings className="h-4 w-4 mr-2" />
+                  Admin
+                </Button>
+              </Link>
+            )}
+            <Link to="/contatti/consulenza-gratuita">
+              <Button variant="cta" size="sm">
+                Consulenza Gratuita
+              </Button>
+            </Link>
+          </div>
         </div>
       </header>
 

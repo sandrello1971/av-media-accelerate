@@ -20,6 +20,7 @@ import Toolkit from "./pages/risorse/Toolkit";
 import ContattiIndex from "./pages/contatti/Index";
 import ConsulenzaGratuita from "./pages/contatti/ConsulenzaGratuita";
 import Auth from "./pages/Auth";
+import AdminDashboard from "./pages/admin/Index";
 import BlogAdmin from "./pages/admin/BlogAdmin";
 import ChatBot from "./pages/ChatBot";
 import NotFound from "./pages/NotFound";
@@ -51,6 +52,7 @@ const App = () => {
               <Route path="/contatti" element={<ContattiIndex />} />
               <Route path="/contatti/consulenza-gratuita" element={<ConsulenzaGratuita />} />
               <Route path="/auth" element={<Auth />} />
+              <Route path="/admin" element={<AdminDashboard />} />
               <Route path="/admin/blog" element={<BlogAdmin />} />
               <Route path="/chatbot" element={<ChatBot />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

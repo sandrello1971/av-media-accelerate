@@ -1,1 +1,4 @@
 project_id = "zsvkhobcovrwvvxdfoqc"
+
+[functions.scrape-website]
+verify_jwt = true
