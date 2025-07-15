@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
-import { FileText, MessageSquare, Upload, Send, Bot, User, Trash2 } from 'lucide-react';
+import { FileText, MessageSquare, Upload, Send, Bot, User, Trash2, RefreshCw } from 'lucide-react';
 
 const ChatBot = () => {
   const [documents, setDocuments] = useState([]);
@@ -23,6 +23,40 @@ const ChatBot = () => {
     if (!user) navigate('/auth?redirect=/chatbot');
     else fetchDocuments();
   }, [user, navigate]);
+
+  const reprocessDocument = async (docId, docName) => {
+    try {
+      setIsLoading(true);
+      
+      // Get document content
+      const { data: doc, error: docError } = await supabase
+        .from('documents')
+        .select('*')
+        .eq('id', docId)
+        .single();
+
+      if (docError) throw docError;
+
+      // Process document with AI
+      const response = await supabase.functions.invoke('process-document', {
+        body: {
+          documentId: doc.id,
+          content: doc.content,
+          fileName: doc.name,
+          fileType: doc.file_type
+        }
+      });
+
+      if (response.error) throw response.error;
+
+      toast({ title: 'Successo', description: `Documento "${docName}" riprocessato con successo!` });
+    } catch (error) {
+      console.error('Errore durante il riprocessamento:', error);
+      toast({ title: 'Errore', description: `Errore nel riprocessamento: ${error.message}`, variant: 'destructive' });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const fetchDocuments = async () => {
     const { data, error } = await supabase
@@ -223,18 +257,33 @@ const ChatBot = () => {
                             {new Date(doc.created_at).toLocaleDateString()}
                           </p>
                         </div>
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="h-8 w-8 p-0 hover:bg-destructive hover:text-destructive-foreground hover:border-destructive"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleDeleteDocument(doc.id, doc.name);
-                          }}
-                          title="Elimina documento"
-                        >
-                          <Trash2 className="h-4 w-4" />
-                        </Button>
+                        <div className="flex gap-2">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="h-8 w-8 p-0 hover:bg-blue-500 hover:text-white hover:border-blue-500"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              reprocessDocument(doc.id, doc.name);
+                            }}
+                            title="Riprocessa documento"
+                            disabled={isLoading}
+                          >
+                            <RefreshCw className="h-4 w-4" />
+                          </Button>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="h-8 w-8 p-0 hover:bg-destructive hover:text-destructive-foreground hover:border-destructive"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleDeleteDocument(doc.id, doc.name);
+                            }}
+                            title="Elimina documento"
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                        </div>
                       </div>
                     </CardContent>
                   </Card>
