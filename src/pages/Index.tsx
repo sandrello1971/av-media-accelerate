@@ -397,55 +397,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-12 border-t border-border/40">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <Brain className="h-6 w-6 text-primary-glow" />
-                <span className="text-lg font-bold text-primary-glow">AV Media Trend</span>
-              </div>
-              <p className="text-sm text-muted-foreground">
-                Accompagniamo le PMI italiane nella trasformazione digitale attraverso l'AI
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="font-semibold mb-4">Servizi</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#" className="hover:text-primary-glow transition-colors">Formazione AI</a></li>
-                <li><a href="#" className="hover:text-primary-glow transition-colors">Consulenza Strategica</a></li>
-                <li><a href="#" className="hover:text-primary-glow transition-colors">Digital Marketing</a></li>
-                <li><a href="#" className="hover:text-primary-glow transition-colors">Supporto Continuativo</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="font-semibold mb-4">Risorse</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#" className="hover:text-primary-glow transition-colors">Blog</a></li>
-                <li><a href="#" className="hover:text-primary-glow transition-colors">Case Studies</a></li>
-                <li><a href="#" className="hover:text-primary-glow transition-colors">Webinar</a></li>
-                <li><a href="#" className="hover:text-primary-glow transition-colors">Toolkit</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="font-semibold mb-4">Contatti</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>Email: info@avmediatrend.com</li>
-                <li>Tel: +39 123 456 7890</li>
-                <li>LinkedIn: /stefano-andrello</li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="border-t border-border/40 mt-8 pt-8 text-center text-sm text-muted-foreground">
-            <p>&copy; 2024 AV Media Trend. Tutti i diritti riservati.</p>
-          </div>
-        </div>
-      </footer>
     </Layout>
   );
 };
