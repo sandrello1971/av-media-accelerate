@@ -32,6 +32,7 @@ const BlogAdmin = () => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [checkingAdmin, setCheckingAdmin] = useState(true);
   const [editingArticle, setEditingArticle] = useState<BlogArticle | null>(null);
+  const [activeTab, setActiveTab] = useState('articles');
   const [formData, setFormData] = useState({
     title: '',
     content: '',
@@ -150,6 +151,7 @@ const BlogAdmin = () => {
         published: false
       });
       setEditingArticle(null);
+      setActiveTab('articles');
       fetchArticles();
     } catch (error: any) {
       toast({
@@ -170,6 +172,7 @@ const BlogAdmin = () => {
       excerpt: article.excerpt || '',
       published: article.published
     });
+    setActiveTab('editor');
   };
 
   const handleDelete = async (id: string) => {
@@ -249,7 +252,7 @@ const BlogAdmin = () => {
           </Button>
         </div>
 
-        <Tabs defaultValue="articles" className="space-y-4">
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-4">
           <TabsList>
             <TabsTrigger value="articles">Articoli</TabsTrigger>
             <TabsTrigger value="editor">Editor</TabsTrigger>
@@ -258,7 +261,16 @@ const BlogAdmin = () => {
           <TabsContent value="articles" className="space-y-4">
             <div className="flex justify-between items-center">
               <h2 className="text-xl font-semibold">I tuoi articoli</h2>
-              <Button onClick={() => setEditingArticle(null)}>
+              <Button onClick={() => {
+                setEditingArticle(null);
+                setFormData({
+                  title: '',
+                  content: '',
+                  excerpt: '',
+                  published: false
+                });
+                setActiveTab('editor');
+              }}>
                 <Plus className="mr-2 h-4 w-4" />
                 Nuovo articolo
               </Button>
@@ -391,6 +403,7 @@ const BlogAdmin = () => {
                             excerpt: '',
                             published: false
                           });
+                          setActiveTab('articles');
                         }}
                       >
                         Annulla
