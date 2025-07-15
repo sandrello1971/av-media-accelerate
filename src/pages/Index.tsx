@@ -404,13 +404,18 @@ const Index = () => {
                 </div>
                 
                 {/* Floating book covers */}
-                <div className="absolute -top-4 -right-4 w-32 h-40 bg-card rounded-lg shadow-glow p-2 animate-float">
+                <a 
+                  href="https://www.amazon.it/dp/B0F8K8367C"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute -top-4 -right-4 w-32 h-40 bg-card rounded-lg shadow-glow p-2 animate-float hover:scale-105 transition-transform cursor-pointer"
+                >
                   <img 
                     src={bookCover} 
                     alt="Il Futuro Non È Scritto" 
                     className="w-full h-full object-cover rounded"
                   />
-                </div>
+                </a>
               </div>
             </div>
           </div>
