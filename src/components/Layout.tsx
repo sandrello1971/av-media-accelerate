@@ -1,10 +1,10 @@
-import { Link, useLocation } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Brain, Settings } from "lucide-react";
-import { ReactNode, useEffect, useState } from "react";
-import { useAuth } from "@/contexts/AuthContext";
-import { supabase } from "@/integrations/supabase/client";
-import FloatingChatBot from "./FloatingChatBot";
+import React, { ReactNode, useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { useAuth } from '@/contexts/AuthContext';
+import { supabase } from '@/integrations/supabase/client';
+import { Menu, X, Settings } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import FloatingChatBot from '@/components/FloatingChatBot';
 
 interface LayoutProps {
   children: ReactNode;
@@ -14,6 +14,7 @@ const Layout = ({ children }: LayoutProps) => {
   const location = useLocation();
   const { user } = useAuth();
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   useEffect(() => {
     const checkAdminStatus = async () => {
@@ -50,89 +51,152 @@ const Layout = ({ children }: LayoutProps) => {
               className="h-24 w-auto"
             />
           </Link>
-          <nav className="hidden md:flex items-center space-x-6">
-            <div className="relative group">
-              <span className={`text-sm font-medium transition-colors cursor-pointer ${
-                isActive("/servizi") ? "text-primary-glow" : "hover:text-primary-glow"
-              }`}>
-                Servizi
-              </span>
-              <div className="absolute top-full left-0 mt-2 w-60 bg-background border border-border/40 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                <Link to="/servizi" className="block px-4 py-2 text-sm hover:bg-accent/10 hover:text-primary-glow">
-                  Panoramica Servizi
-                </Link>
-                <Link to="/servizi/formazione" className="block px-4 py-2 text-sm hover:bg-accent/10 hover:text-primary-glow">
-                  Formazione AI
-                </Link>
-                <Link to="/servizi/consulenza" className="block px-4 py-2 text-sm hover:bg-accent/10 hover:text-primary-glow">
-                  Consulenza Strategica
-                </Link>
-                <Link to="/servizi/pacchetti-consulenza" className="block px-4 py-2 text-sm hover:bg-accent/10 hover:text-primary-glow">
-                  🧠 Pacchetti di Consulenza AI
-                </Link>
-              </div>
-            </div>
-            <div className="relative group">
-              <span className={`text-sm font-medium transition-colors cursor-pointer ${
-                isActive("/chi-siamo") ? "text-primary-glow" : "hover:text-primary-glow"
-              }`}>
-                Chi Siamo
-              </span>
-              <div className="absolute top-full left-0 mt-2 w-48 bg-background border border-border/40 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                <Link to="/chi-siamo" className="block px-4 py-2 text-sm hover:bg-accent/10 hover:text-primary-glow">
-                  Panoramica
-                </Link>
-                <Link to="/chi-siamo/metodologia" className="block px-4 py-2 text-sm hover:bg-accent/10 hover:text-primary-glow">
-                  Metodologia
-                </Link>
-                <Link to="/chi-siamo/libri-stefano" className="block px-4 py-2 text-sm hover:bg-accent/10 hover:text-primary-glow">
-                  Libri di Stefano
-                </Link>
-              </div>
-            </div>
-            <div className="relative group">
-              <span className="text-sm font-medium hover:text-primary-glow transition-colors cursor-pointer">
-                Risorse
-              </span>
-              <div className="absolute top-full left-0 mt-2 w-48 bg-background border border-border/40 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                <Link to="/risorse/blog" className="block px-4 py-2 text-sm hover:bg-accent/10 hover:text-primary-glow">
-                  Blog
-                </Link>
-                <Link to="/risorse/case-studies" className="block px-4 py-2 text-sm hover:bg-accent/10 hover:text-primary-glow">
-                  Case Studies
-                </Link>
-                <Link to="/risorse/webinar" className="block px-4 py-2 text-sm hover:bg-accent/10 hover:text-primary-glow">
-                  Webinar
-                </Link>
-                <Link to="/risorse/toolkit" className="block px-4 py-2 text-sm hover:bg-accent/10 hover:text-primary-glow">
-                  Toolkit
-                </Link>
-              </div>
-            </div>
-            <Link 
-              to="/contatti" 
-              className={`text-sm font-medium transition-colors ${
-                isActive("/contatti") ? "text-primary-glow" : "hover:text-primary-glow"
-              }`}
-            >
-              Contatti
-            </Link>
-          </nav>
-          <div className="flex items-center space-x-2">
-            {isAdmin && (
-              <Link to="/admin">
-                <Button variant="ghost" size="sm" className="text-primary-glow hover:text-primary-glow/80">
-                  <Settings className="h-4 w-4 mr-2" />
-                  Admin
-                </Button>
-              </Link>
+          
+          {/* Hamburger Menu Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="relative z-50 p-3 rounded-lg bg-background/20 backdrop-blur-sm border border-white/20 hover:bg-background/30 transition-colors"
+          >
+            {isMobileMenuOpen ? (
+              <X className="h-6 w-6 text-white" />
+            ) : (
+              <Menu className="h-6 w-6 text-white" />
             )}
-            <Link to="/contatti/consulenza-gratuita">
-              <Button variant="cta" size="sm">
-                Consulenza Gratuita
-              </Button>
-            </Link>
-          </div>
+          </button>
+
+          {/* Mobile Menu Overlay */}
+          {isMobileMenuOpen && (
+            <div className="fixed inset-0 z-40 bg-background/95 backdrop-blur-md">
+              <div className="flex flex-col items-center justify-center h-full space-y-8">
+                <div className="space-y-6 text-center">
+                  <div className="space-y-4">
+                    <div className="text-2xl font-medium text-primary-glow mb-4">Servizi</div>
+                    <div className="space-y-2 pl-4">
+                      <Link 
+                        to="/servizi" 
+                        className="block text-lg text-foreground hover:text-primary-glow transition-colors"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        Panoramica Servizi
+                      </Link>
+                      <Link 
+                        to="/servizi/formazione" 
+                        className="block text-lg text-foreground hover:text-primary-glow transition-colors"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        Formazione AI
+                      </Link>
+                      <Link 
+                        to="/servizi/consulenza" 
+                        className="block text-lg text-foreground hover:text-primary-glow transition-colors"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        Consulenza Strategica
+                      </Link>
+                      <Link 
+                        to="/servizi/pacchetti-consulenza" 
+                        className="block text-lg text-foreground hover:text-primary-glow transition-colors"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        🧠 Pacchetti di Consulenza AI
+                      </Link>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <div className="text-2xl font-medium text-primary-glow mb-4">Chi Siamo</div>
+                    <div className="space-y-2 pl-4">
+                      <Link 
+                        to="/chi-siamo" 
+                        className="block text-lg text-foreground hover:text-primary-glow transition-colors"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        Panoramica
+                      </Link>
+                      <Link 
+                        to="/chi-siamo/metodologia" 
+                        className="block text-lg text-foreground hover:text-primary-glow transition-colors"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        Metodologia
+                      </Link>
+                      <Link 
+                        to="/chi-siamo/libri-stefano" 
+                        className="block text-lg text-foreground hover:text-primary-glow transition-colors"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        Libri di Stefano
+                      </Link>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <div className="text-2xl font-medium text-primary-glow mb-4">Risorse</div>
+                    <div className="space-y-2 pl-4">
+                      <Link 
+                        to="/risorse/blog" 
+                        className="block text-lg text-foreground hover:text-primary-glow transition-colors"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        Blog
+                      </Link>
+                      <Link 
+                        to="/risorse/case-studies" 
+                        className="block text-lg text-foreground hover:text-primary-glow transition-colors"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        Case Studies
+                      </Link>
+                      <Link 
+                        to="/risorse/webinar" 
+                        className="block text-lg text-foreground hover:text-primary-glow transition-colors"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        Webinar
+                      </Link>
+                      <Link 
+                        to="/risorse/toolkit" 
+                        className="block text-lg text-foreground hover:text-primary-glow transition-colors"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        Toolkit
+                      </Link>
+                    </div>
+                  </div>
+                  
+                  <Link 
+                    to="/contatti" 
+                    className="block text-2xl font-medium text-primary-glow hover:text-primary-glow/80 transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Contatti
+                  </Link>
+                  
+                  {isAdmin && (
+                    <Link 
+                      to="/admin" 
+                      className="flex items-center justify-center text-2xl font-medium text-primary-glow hover:text-primary-glow/80 transition-colors"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      <Settings className="h-6 w-6 mr-2" />
+                      Admin
+                    </Link>
+                  )}
+                </div>
+                
+                <Button 
+                  variant="default" 
+                  size="lg" 
+                  className="bg-primary-glow hover:bg-primary-glow/90 text-background font-semibold px-8"
+                  asChild
+                >
+                  <Link to="/contatti/consulenza-gratuita" onClick={() => setIsMobileMenuOpen(false)}>
+                    Consulenza Gratuita
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          )}
         </div>
       </header>
 
@@ -145,7 +209,7 @@ const Layout = ({ children }: LayoutProps) => {
       <footer className="py-12 border-t border-border/40">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
-            <div className="md:col-span-2">{/* Expanded column for main brand */}
+            <div className="md:col-span-2">
               <div className="flex items-center mb-4">
                 <img 
                   src="/lovable-uploads/dc135068-69c9-482a-a7fb-985bfd43d140.png" 
