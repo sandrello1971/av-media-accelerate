@@ -32,7 +32,7 @@ const Index = () => {
             </Badge>
             
             <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary-glow to-secondary bg-clip-text text-transparent animate-fade-in">
-              L'AI Evangelist che Trasforma le PMI Italiane
+              L'AI che Trasforma le PMI Italiane
             </h1>
             
             <p className="text-xl md:text-2xl mb-8 text-muted-foreground max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>

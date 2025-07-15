@@ -120,8 +120,8 @@ const Layout = ({ children }: LayoutProps) => {
               <h3 className="font-semibold mb-4">Contatti</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>Email: info@avmediatrend.com</li>
-                <li>Tel: +39 123 456 7890</li>
-                <li>LinkedIn: /stefano-andrello</li>
+                <li>Tel: +39 347 685 9801</li>
+                <li><a href="https://www.linkedin.com/company/avmediatrend" target="_blank" rel="noopener noreferrer" className="hover:text-primary-glow transition-colors">LinkedIn: /company/avmediatrend</a></li>
               </ul>
             </div>
           </div>
