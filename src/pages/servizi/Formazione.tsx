@@ -22,7 +22,7 @@ const Formazione = () => {
             
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
               Workshop personalizzati e corsi pratici per portare l'intelligenza artificiale nella tua PMI. 
-              Formazione certificata con possibilità di credito d'imposta Formazione 4.0.
+              Formazione certificata con possibilità di credito d'imposta.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -215,11 +215,11 @@ const Formazione = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <Badge className="mb-6 bg-primary-glow/20 text-primary-glow border-primary-glow/30">
-                  Credito d'Imposta Formazione 4.0
+                  Credito d'Imposta
                 </Badge>
                 <h2 className="text-4xl font-bold mb-6">Formazione a Costo Zero</h2>
                 <p className="text-lg text-muted-foreground mb-8">
-                  Approfitta del credito d'imposta per la formazione 4.0 e ottieni 
+                  Approfitta del credito d'imposta e ottieni 
                   la formazione AI per la tua PMI senza costi aggiuntivi.
                 </p>
                 
