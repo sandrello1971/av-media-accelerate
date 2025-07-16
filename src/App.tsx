@@ -24,6 +24,9 @@ import AdminDashboard from "./pages/admin/Index";
 import BlogAdmin from "./pages/admin/BlogAdmin";
 import ChatBot from "./pages/ChatBot";
 import NotFound from "./pages/NotFound";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import CookiePolicy from "./pages/CookiePolicy";
+import { CookieBanner } from "@/components/CookieBanner";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +37,7 @@ const App = () => {
         <AuthProvider>
           <Toaster />
           <Sonner />
+          <CookieBanner />
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
@@ -55,6 +59,8 @@ const App = () => {
               <Route path="/admin" element={<AdminDashboard />} />
               <Route path="/admin/blog" element={<BlogAdmin />} />
               <Route path="/chatbot" element={<ChatBot />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/cookie-policy" element={<CookiePolicy />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
