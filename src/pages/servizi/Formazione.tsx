@@ -208,62 +208,6 @@ const Formazione = () => {
         </div>
       </section>
 
-      {/* Credito d'Imposta */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <Badge className="mb-6 bg-primary-glow/20 text-primary-glow border-primary-glow/30">
-                  Credito d'Imposta
-                </Badge>
-                <h2 className="text-4xl font-bold mb-6">Formazione a Costo Zero</h2>
-                <p className="text-lg text-muted-foreground mb-8">
-                  Approfitta del credito d'imposta e ottieni 
-                  la formazione AI per la tua PMI senza costi aggiuntivi.
-                </p>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 bg-primary-glow/20 rounded-lg flex items-center justify-center">
-                      <TrendingUp className="h-6 w-6 text-primary-glow" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold">Fino al 70%</h3>
-                      <p className="text-sm text-muted-foreground">di credito d'imposta</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 bg-secondary/20 rounded-lg flex items-center justify-center">
-                      <Clock className="h-6 w-6 text-secondary" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold">Assistenza Completa</h3>
-                      <p className="text-sm text-muted-foreground">dalla pratica al rimborso</p>
-                    </div>
-                  </div>
-                </div>
-                
-                <Link to="/contatti/consulenza-gratuita">
-                  <Button variant="cta" size="lg" className="group">
-                    Scopri Come Accedere
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </Link>
-              </div>
-              
-              <div className="bg-gradient-primary rounded-2xl p-8 text-center">
-                <div className="text-6xl font-bold text-white mb-4">70%</div>
-                <div className="text-xl text-white/90 mb-6">Credito d'Imposta</div>
-                <div className="text-white/80 text-sm">
-                  Per PMI con meno di 250 dipendenti
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-primary">
