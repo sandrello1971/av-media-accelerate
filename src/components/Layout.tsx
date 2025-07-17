@@ -45,7 +45,7 @@ const Layout = ({ children }: LayoutProps) => {
       <header className="fixed top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <Link to="/" className="flex items-center space-x-2">
-            <img src="/lovable-uploads/1947861b-f27b-4bf0-99d3-726e7c2edb03.png" alt="AVMT Logo" className="h-8 w-auto" />
+            <img src="/lovable-uploads/1947861b-f27b-4bf0-99d3-726e7c2edb03.png" alt="AVMT Logo" className="h-16 w-auto" />
             <span className="text-xl font-bold text-primary-glow">AV Media Trend</span>
           </Link>
           <nav className="hidden md:flex items-center space-x-6">
@@ -154,7 +154,7 @@ const Layout = ({ children }: LayoutProps) => {
           <div className="fixed top-0 right-0 h-full w-full max-w-sm bg-background border-l border-border/40 p-6 shadow-lg">
             <div className="flex items-center justify-between mb-8">
               <div className="flex items-center space-x-2">
-                <img src="/lovable-uploads/1947861b-f27b-4bf0-99d3-726e7c2edb03.png" alt="AVMT Logo" className="h-6 w-auto" />
+                <img src="/lovable-uploads/1947861b-f27b-4bf0-99d3-726e7c2edb03.png" alt="AVMT Logo" className="h-12 w-auto" />
                 <span className="text-lg font-bold text-primary-glow">AV Media Trend</span>
               </div>
               <Button
@@ -256,7 +256,7 @@ const Layout = ({ children }: LayoutProps) => {
           <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
             <div className="md:col-span-2">{/* Expanded column for main brand */}
               <div className="flex items-center space-x-2 mb-4">
-                <img src="/lovable-uploads/1947861b-f27b-4bf0-99d3-726e7c2edb03.png" alt="AVMT Logo" className="h-6 w-auto" />
+                <img src="/lovable-uploads/1947861b-f27b-4bf0-99d3-726e7c2edb03.png" alt="AVMT Logo" className="h-12 w-auto" />
                 <span className="text-lg font-bold text-primary-glow">AV Media Trend</span>
               </div>
               <p className="text-sm text-muted-foreground">

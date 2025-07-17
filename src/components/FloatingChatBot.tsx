@@ -177,7 +177,14 @@ const FloatingChatBot = () => {
                       ? 'bg-primary text-white' 
                       : 'bg-muted text-foreground'
                   }`}>
-                    <p className="text-sm">{message.content}</p>
+                    <div 
+                      className="text-sm whitespace-pre-wrap"
+                      dangerouslySetInnerHTML={{
+                        __html: message.content
+                          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                          .replace(/\n/g, '<br>')
+                      }}
+                    />
                     <p className="text-xs opacity-70 mt-1">
                       {message.timestamp.toLocaleTimeString('it-IT', { 
                         hour: '2-digit', 
